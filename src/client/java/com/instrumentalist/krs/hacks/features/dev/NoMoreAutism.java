@@ -20,7 +20,7 @@ import net.minecraft.network.protocol.game.ClientboundSystemChatPacket;
 public class NoMoreAutism extends Module {
 
     public NoMoreAutism() {
-        super("No More Autism", ModuleCategory.Dev, GLFW.GLFW_KEY_UNKNOWN, false, true);
+        super("不再自闭", ModuleCategory.Dev, GLFW.GLFW_KEY_UNKNOWN, false, true);
     }
 
     private final Set<String> nWords = new HashSet<>(Set.of(

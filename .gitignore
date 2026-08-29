@@ -40,3 +40,7 @@ replay_*.log
 *.jfr
 
 *.salive
+
+# reasonix 工作环境
+.reasonix/
+reasonix.toml

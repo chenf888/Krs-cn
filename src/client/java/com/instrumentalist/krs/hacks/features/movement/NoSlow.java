@@ -28,16 +28,16 @@ import java.util.Locale;
 public class NoSlow extends Module {
 
     @Setting
-    private static final ListValue mode = new ListValue("Mode", new String[]{"Vanilla", "Hypixel NCP"}, "Vanilla");
+    private static final ListValue mode = new ListValue("模式", new String[]{"Vanilla", "Hypixel NCP"}, "Vanilla");
 
     @Setting
-    private static final BooleanValue sneak = new BooleanValue("Sneak", false, () -> mode.get().equalsIgnoreCase("vanilla"));
+    private static final BooleanValue sneak = new BooleanValue("潜行", false, () -> mode.get().equalsIgnoreCase("vanilla"));
 
     private static int lastSneakInputTick = Integer.MIN_VALUE;
     private boolean waitingPacket = false;
 
     public NoSlow() {
-        super("No Slow", ModuleCategory.Movement, GLFW.GLFW_KEY_UNKNOWN, false, true);
+        super("防减速", ModuleCategory.Movement, GLFW.GLFW_KEY_UNKNOWN, false, true);
     }
 
     @Override

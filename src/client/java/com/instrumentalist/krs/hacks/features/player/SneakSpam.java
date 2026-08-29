@@ -12,7 +12,7 @@ import org.lwjgl.glfw.GLFW;
 public class SneakSpam extends Module {
 
     public SneakSpam() {
-        super("Sneak Spam", ModuleCategory.Player, GLFW.GLFW_KEY_UNKNOWN, false, true);
+        super("潜行连发", ModuleCategory.Player, GLFW.GLFW_KEY_UNKNOWN, false, true);
     }
 
     @Override

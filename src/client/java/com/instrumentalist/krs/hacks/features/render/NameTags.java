@@ -43,10 +43,10 @@ public class NameTags extends Module {
     private static final Comparator<NameTagRenderData> FARTHEST_FIRST = DEPTH_ORDER.reversed();
 
     @Setting
-    private static final BooleanValue onlyPlayers = new BooleanValue("Only Players", true);
+    private static final BooleanValue onlyPlayers = new BooleanValue("仅玩家", true);
 
     @Setting
-    private static final BooleanValue local = new BooleanValue("Local", false);
+    private static final BooleanValue local = new BooleanValue("本地", false);
 
     private final ArrayList<NameTagRenderData> data = new ArrayList<>(MAX_RENDERED_NAME_TAGS);
     private final ArrayList<NameTagRenderData> dataPool = new ArrayList<>(MAX_RENDERED_NAME_TAGS);
@@ -61,7 +61,7 @@ public class NameTags extends Module {
     private final float[] backgroundGeometry = new float[MAX_RENDERED_NAME_TAGS * 8];
 
     public NameTags() {
-        super("Name Tags", ModuleCategory.Render, GLFW.GLFW_KEY_UNKNOWN, false, true);
+        super("名牌", ModuleCategory.Render, GLFW.GLFW_KEY_UNKNOWN, false, true);
     }
 
     @Override

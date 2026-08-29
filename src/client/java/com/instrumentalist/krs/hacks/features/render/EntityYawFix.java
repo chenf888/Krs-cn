@@ -6,7 +6,7 @@ import org.lwjgl.glfw.GLFW;
 
 public class EntityYawFix extends Module {
     public EntityYawFix() {
-        super("Entity Yaw Fix", ModuleCategory.Render, GLFW.GLFW_KEY_UNKNOWN, false, false);
+        super("实体偏航修正", ModuleCategory.Render, GLFW.GLFW_KEY_UNKNOWN, false, false);
     }
 
     @Override

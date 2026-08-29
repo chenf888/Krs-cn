@@ -13,14 +13,14 @@ import org.lwjgl.glfw.GLFW;
 public class FastEat extends Module {
 
     public FastEat() {
-        super("Fast Eat", ModuleCategory.Combat, GLFW.GLFW_KEY_UNKNOWN, false, true);
+        super("快速进食", ModuleCategory.Combat, GLFW.GLFW_KEY_UNKNOWN, false, true);
     }
 
     @Setting
-    private final IntValue packets = new IntValue("Packets", 32, 1, 32, "x");
+    private final IntValue packets = new IntValue("数据包", 32, 1, 32, "x");
 
     @Setting
-    private final IntValue chargeTicks = new IntValue("Charge Ticks", 1, 1, 20, "ticks");
+    private final IntValue chargeTicks = new IntValue("蓄力刻", 1, 1, 20, "ticks");
 
     @Override
     public void onDisable() {

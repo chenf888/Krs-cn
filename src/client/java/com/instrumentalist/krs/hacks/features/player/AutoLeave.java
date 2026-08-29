@@ -13,18 +13,18 @@ import org.lwjgl.glfw.GLFW;
 
 public class AutoLeave extends Module {
     @Setting
-    private final ListValue mode = new ListValue("Mode", new String[]{"Health", "Void", "Both", "No Totem", "Smart"}, "Health");
+    private final ListValue mode = new ListValue("模式", new String[]{"Health", "Void", "Both", "No Totem", "Smart"}, "Health");
 
     @Setting
-    private final FloatValue health = new FloatValue("Health", 4f, 1f, 20f);
+    private final FloatValue health = new FloatValue("生命值", 4f, 1f, 20f);
 
     @Setting
-    private final BooleanValue multiplayerOnly = new BooleanValue("Multiplayer Only", true);
+    private final BooleanValue multiplayerOnly = new BooleanValue("仅多人", true);
 
     private boolean left = false;
 
     public AutoLeave() {
-        super("Auto Leave", ModuleCategory.Player, GLFW.GLFW_KEY_UNKNOWN, false, true);
+        super("自动退出", ModuleCategory.Player, GLFW.GLFW_KEY_UNKNOWN, false, true);
     }
 
     @Override

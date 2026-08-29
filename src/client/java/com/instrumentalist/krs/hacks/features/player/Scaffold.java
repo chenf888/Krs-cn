@@ -78,82 +78,82 @@ public class Scaffold extends Module {
     private static final int MATH_FACE_SAMPLE_DIVISIONS = 16;
 
     @Setting
-    private static final ListValue mode = new ListValue("Mode", new String[]{"Normal", "Telly"}, "Normal");
+    private static final ListValue mode = new ListValue("模式", new String[]{"Normal", "Telly"}, "Normal");
 
     @Setting
-    private static final BooleanValue tower = new BooleanValue("Tower", true);
+    private static final BooleanValue tower = new BooleanValue("高塔", true);
 
     @Setting
-    private static final BooleanValue towerCenter = new BooleanValue("Tower Center", false, tower::get);
+    private static final BooleanValue towerCenter = new BooleanValue("高塔居中", false, tower::get);
 
     @Setting
-    private static final ListValue towerWhen = new ListValue("Tower When", new String[]{"Always", "Moving", "Standing"}, "Always", tower::get);
+    private static final ListValue towerWhen = new ListValue("高塔时机", new String[]{"Always", "Moving", "Standing"}, "Always", tower::get);
 
     @Setting
-    private static final ListValue towerMode = new ListValue("Tower Mode", new String[]{"Vanilla", "NCP", "Hypixel"}, "Vanilla", tower::get);
+    private static final ListValue towerMode = new ListValue("高塔模式", new String[]{"Vanilla", "NCP", "Hypixel"}, "Vanilla", tower::get);
 
     @Setting
-    private static final FloatValue towerSpeed = new FloatValue("Tower Speed", 1f, 0.1f, 1f, () -> tower.get() && towerMode.get().equalsIgnoreCase("vanilla"));
+    private static final FloatValue towerSpeed = new FloatValue("高塔速度", 1f, 0.1f, 1f, () -> tower.get() && towerMode.get().equalsIgnoreCase("vanilla"));
 
     @Setting
-    private static final ListValue tellyMode = new ListValue("Telly Mode", new String[]{"Normal", "Non Upwards"}, "Normal", Scaffold::canDisplayTellyMode);
+    private static final ListValue tellyMode = new ListValue("Telly模式", new String[]{"Normal", "Non Upwards"}, "Normal", Scaffold::canDisplayTellyMode);
 
     @Setting
-    public static final ListValue rotationMode = new ListValue("Rotation Mode", new String[]{"Math", "Simple", "Backwards", "None"}, "Math");
+    public static final ListValue rotationMode = new ListValue("旋转模式", new String[]{"Math", "Simple", "Backwards", "None"}, "Math");
 
     @Setting
-    private static final FloatValue maxRotationSpeed = new FloatValue("Max Rotation Speed", 60f, 0f, 180f, Scaffold::usesRotationSpeed);
+    private static final FloatValue maxRotationSpeed = new FloatValue("最大旋转速度", 60f, 0f, 180f, Scaffold::usesRotationSpeed);
 
     @Setting
-    private static final FloatValue minRotationSpeed = new FloatValue("Min Rotation Speed", 40f, 0f, 180f, Scaffold::usesRotationSpeed);
+    private static final FloatValue minRotationSpeed = new FloatValue("最小旋转速度", 40f, 0f, 180f, Scaffold::usesRotationSpeed);
 
     @Setting
-    private static final BooleanValue jitter = new BooleanValue("Jitter", true, Scaffold::usesRotationSpeed);
+    private static final BooleanValue jitter = new BooleanValue("抖动", true, Scaffold::usesRotationSpeed);
 
     @Setting
-    private static final FloatValue preRotationLead = new FloatValue("Pre Rotation Lead", 1.0f, 0.0f, 5.0f, Scaffold::usesMathPreRotation);
+    private static final FloatValue preRotationLead = new FloatValue("旋转预置提前量", 1.0f, 0.0f, 5.0f, Scaffold::usesMathPreRotation);
 
     @Setting
-    private static final BooleanValue snapRotation = new BooleanValue("Snap Rotation", false, () -> rotationMode.get().equalsIgnoreCase("math") || rotationMode.get().equalsIgnoreCase("simple"));
+    private static final BooleanValue snapRotation = new BooleanValue("吸附旋转", false, () -> rotationMode.get().equalsIgnoreCase("math") || rotationMode.get().equalsIgnoreCase("simple"));
 
     @Setting
-    private static final BooleanValue noPlaceWhenSnapping = new BooleanValue("No Place when Snapping", false, () -> (rotationMode.get().equalsIgnoreCase("math") || rotationMode.get().equalsIgnoreCase("simple")) && snapRotation.get());
+    private static final BooleanValue noPlaceWhenSnapping = new BooleanValue("吸附时不放置", false, () -> (rotationMode.get().equalsIgnoreCase("math") || rotationMode.get().equalsIgnoreCase("simple")) && snapRotation.get());
 
     @Setting
-    private static final BooleanValue noHitCheck = new BooleanValue("No Hit Check", false, Scaffold::hasNoHitCheckOption);
+    private static final BooleanValue noHitCheck = new BooleanValue("无命中检测", false, Scaffold::hasNoHitCheckOption);
 
     @Setting
-    private static final BooleanValue tellyAfterPlaceNoHitCheck = new BooleanValue("Telly After Place No Hit Check", false, Scaffold::canDisplayTellyAfterPlaceNoHitCheck);
+    private static final BooleanValue tellyAfterPlaceNoHitCheck = new BooleanValue("放置后无命中检测", false, Scaffold::canDisplayTellyAfterPlaceNoHitCheck);
 
     @Setting
-    private static final IntValue searchRange = new IntValue("Search Range", 2, 0, 5, "m");
+    private static final IntValue searchRange = new IntValue("搜索范围", 2, 0, 5, "m");
 
     @Setting
-    private static final BooleanValue customTimer = new BooleanValue("Custom Timer", false);
+    private static final BooleanValue customTimer = new BooleanValue("自定义计时器", false);
 
     @Setting
-    private static final FloatValue towerTimerSpeed = new FloatValue("Tower Timer Speed", 1.5f, 0.1f, 10f, () -> customTimer.get() && tower.get());
+    private static final FloatValue towerTimerSpeed = new FloatValue("高塔计时器速度", 1.5f, 0.1f, 10f, () -> customTimer.get() && tower.get());
 
     @Setting
-    private static final FloatValue normalTimerSpeed = new FloatValue("Normal Timer Speed", 1.5f, 0.1f, 10f, customTimer::get);
+    private static final FloatValue normalTimerSpeed = new FloatValue("常规计时器速度", 1.5f, 0.1f, 10f, customTimer::get);
 
     @Setting
-    private static final BooleanValue keepY = new BooleanValue("KeepY", true);
+    private static final BooleanValue keepY = new BooleanValue("保持Y", true);
 
     @Setting
-    private static final BooleanValue keepYOnlySpeed = new BooleanValue("KeepY Only Speed", true, keepY::get);
+    private static final BooleanValue keepYOnlySpeed = new BooleanValue("保持Y仅速度", true, keepY::get);
 
     @Setting
-    private static final BooleanValue intelligentPicker = new BooleanValue("Intelligent Picker", true);
+    private static final BooleanValue intelligentPicker = new BooleanValue("智能选择", true);
 
     @Setting
-    public static final BooleanValue noSprint = new BooleanValue("No Sprint", false);
+    public static final BooleanValue noSprint = new BooleanValue("不疾跑", false);
 
     @Setting
-    private static final ListValue edgeSafe = new ListValue("Edge Safe", new String[]{"None", "Safewalk", "Sneak", "Auto Input Fix"}, "None");
+    private static final ListValue edgeSafe = new ListValue("边缘安全", new String[]{"None", "Safewalk", "Sneak", "Auto Input Fix"}, "None");
 
     @Setting
-    private static final BooleanValue down = new BooleanValue("Down", true);
+    private static final BooleanValue down = new BooleanValue("向下", true);
 
     private static int hotbarStackSize = 0;
     private static boolean wasTowering = false;
@@ -216,7 +216,7 @@ public class Scaffold extends Module {
     }
 
     public Scaffold() {
-        super("Scaffold", ModuleCategory.Player, GLFW.GLFW_KEY_UNKNOWN, false, true);
+        super("脚手架", ModuleCategory.Player, GLFW.GLFW_KEY_UNKNOWN, false, true);
     }
 
     @Override

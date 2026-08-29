@@ -15,13 +15,13 @@ import org.lwjgl.glfw.GLFW;
 public class ElytraFly extends Module {
 
     @Setting
-    private final FloatValue horizontalSpeed = new FloatValue("Horizontal Speed", 1.8f, 0.1f, 4f);
+    private final FloatValue horizontalSpeed = new FloatValue("水平速度", 1.8f, 0.1f, 4f);
 
     @Setting
-    private final FloatValue verticalSpeed = new FloatValue("Vertical Speed", 1.2f, 0.1f, 4f);
+    private final FloatValue verticalSpeed = new FloatValue("垂直速度", 1.2f, 0.1f, 4f);
 
     public ElytraFly() {
-        super("Elytra Fly", ModuleCategory.Movement, GLFW.GLFW_KEY_UNKNOWN, false, true);
+        super("鞘翅飞行", ModuleCategory.Movement, GLFW.GLFW_KEY_UNKNOWN, false, true);
     }
 
     public static Vec3 hookFallFlyingMovement(Vec3 original, LivingEntity entity) {

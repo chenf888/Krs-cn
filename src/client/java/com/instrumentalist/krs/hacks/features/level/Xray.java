@@ -17,7 +17,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class Xray extends Module {
 
     @Setting
-    private static final BooleanValue bypassAntiXray = new BooleanValue("Bypass Anti Xray", false) {
+    private static final BooleanValue bypassAntiXray = new BooleanValue("绕过防透视", false) {
         @Override
         protected void onChanged(Boolean oldValue, Boolean newValue) {
             super.onChanged(oldValue, newValue);
@@ -30,7 +30,7 @@ public class Xray extends Module {
     private static volatile boolean irisShaderPackInUse;
 
     @Setting
-    private static final FloatValue opacity = new FloatValue("Block Opacity", 0.2f, 0f, 0.99f) {
+    private static final FloatValue opacity = new FloatValue("方块不透明度", 0.2f, 0f, 0.99f) {
         @Override
         protected void onChanged(Float oldValue, Float newValue) {
             super.onChanged(oldValue, newValue);
@@ -40,7 +40,7 @@ public class Xray extends Module {
     };
 
     public Xray() {
-        super("Xray", ModuleCategory.Level, GLFW.GLFW_KEY_UNKNOWN, false, true);
+        super("X光透视", ModuleCategory.Level, GLFW.GLFW_KEY_UNKNOWN, false, true);
     }
 
     @Override

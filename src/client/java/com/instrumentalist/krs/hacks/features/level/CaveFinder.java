@@ -11,7 +11,7 @@ public class CaveFinder extends Module {
     private static volatile boolean active;
 
     public CaveFinder() {
-        super("Cave Finder", ModuleCategory.Level, GLFW.GLFW_KEY_UNKNOWN, false, true);
+        super("洞穴寻找", ModuleCategory.Level, GLFW.GLFW_KEY_UNKNOWN, false, true);
     }
 
     @Override

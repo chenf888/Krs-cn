@@ -26,18 +26,16 @@ import net.minecraft.world.phys.Vec3;
 public class LookTP extends Module {
 
     public LookTP() {
-        super("Look TP", ModuleCategory.Player, GLFW.GLFW_KEY_UNKNOWN, false, true);
+        super("视线传送", ModuleCategory.Player, GLFW.GLFW_KEY_UNKNOWN, false, true);
     }
 
     @Setting
-    private final BooleanValue tpOnGroundPacket = new BooleanValue(
-            "TP On Ground Packet",
+    private final BooleanValue tpOnGroundPacket = new BooleanValue("传送落地数据包",
             true
     );
 
     @Setting
-    private final BooleanValue clientsideTeleport = new BooleanValue(
-            "Clientside Teleport",
+    private final BooleanValue clientsideTeleport = new BooleanValue("客户端传送",
             false
     );
 
@@ -52,7 +50,7 @@ public class LookTP extends Module {
 
     @Override
     public String description() {
-        return "Use with left alt + right click";
+        return "左 Alt + 右键使用";
     }
 
     @Override
@@ -101,7 +99,7 @@ public class LookTP extends Module {
             }
 
             resetClientsideTeleport();
-            Client.notificationManager.addNotification("Success", "Teleported!");
+            Client.notificationManager.addNotification("成功", "已传送!");
             tpTimer.reset();
             return;
         }
@@ -127,7 +125,7 @@ public class LookTP extends Module {
             paths = MainPathFinder.computePath(mc.player.position(), posResult.getLocation());
 
             if (paths.isEmpty()) {
-                Client.notificationManager.addNotification("Look TP", "Failed to teleport");
+                Client.notificationManager.addNotification("视线传送", "传送失败");
                 tpTimer.reset();
                 return;
             }
@@ -141,7 +139,7 @@ public class LookTP extends Module {
                 clientsideTargetPosition = posResult.getLocation();
                 waitingForClientsideTeleport = false;
                 mc.player.setDeltaMovement(Vec3.ZERO);
-                Client.notificationManager.addNotification("Look TP", "Teleporting...");
+                Client.notificationManager.addNotification("视线传送", "正在传送...");
                 tpTimer.reset();
                 return;
             }
@@ -152,7 +150,7 @@ public class LookTP extends Module {
 
             mc.player.setPos(posResult.getLocation());
 
-            Client.notificationManager.addNotification("Success", "Teleported!");
+            Client.notificationManager.addNotification("成功", "已传送!");
             tpTimer.reset();
         }
     }
@@ -165,7 +163,7 @@ public class LookTP extends Module {
 
         if ((isMovingServerSide() || waitingForClientsideTeleport) && packet instanceof ClientboundPlayerPositionPacket) {
             resetClientsideTeleport();
-            Client.notificationManager.addNotification("Look TP", "Failed to teleport");
+            Client.notificationManager.addNotification("视线传送", "传送失败");
             tpTimer.reset();
         }
     }

@@ -13,22 +13,22 @@ import org.lwjgl.glfw.GLFW;
 
 public class Stasis extends Module {
     @Setting
-    private final BooleanValue stopX = new BooleanValue("Stop X", true);
+    private final BooleanValue stopX = new BooleanValue("停止X", true);
 
     @Setting
-    private final BooleanValue stopY = new BooleanValue("Stop Y", true);
+    private final BooleanValue stopY = new BooleanValue("停止Y", true);
 
     @Setting
-    private final BooleanValue stopZ = new BooleanValue("Stop Z", true);
+    private final BooleanValue stopZ = new BooleanValue("停止Z", true);
 
     @Setting
-    private final BooleanValue cancelPlayerMovement = new BooleanValue("Cancel Player Movement", true);
+    private final BooleanValue cancelPlayerMovement = new BooleanValue("取消玩家移动", true);
 
     private int ticksSinceMotionRefresh;
     private Vec3 storedMovement = Vec3.ZERO;
 
     public Stasis() {
-        super("Stasis", ModuleCategory.Movement, GLFW.GLFW_KEY_UNKNOWN, false, true);
+        super("静止", ModuleCategory.Movement, GLFW.GLFW_KEY_UNKNOWN, false, true);
     }
 
     @Override

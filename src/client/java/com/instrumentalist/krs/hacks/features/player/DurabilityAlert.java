@@ -28,22 +28,22 @@ public class DurabilityAlert extends Module {
     };
 
     @Setting
-    private final IntValue threshold = new IntValue("Threshold", 15, 1, 50, "%");
+    private final IntValue threshold = new IntValue("阈值", 15, 1, 50, "%");
 
     @Setting
-    private final IntValue repeatDelay = new IntValue("Repeat Delay", 30, 0, 300, "s");
+    private final IntValue repeatDelay = new IntValue("重复延迟", 30, 0, 300, "s");
 
     @Setting
-    private final BooleanValue armor = new BooleanValue("Armor", true);
+    private final BooleanValue armor = new BooleanValue("盔甲", true);
 
     @Setting
-    private final BooleanValue hands = new BooleanValue("Hands", true);
+    private final BooleanValue hands = new BooleanValue("手持", true);
 
     private final EnumMap<EquipmentSlot, SlotState> slotStates = new EnumMap<>(EquipmentSlot.class);
     private int checkTicks;
 
     public DurabilityAlert() {
-        super("Durability Alert", ModuleCategory.Player, GLFW.GLFW_KEY_UNKNOWN, false, true);
+        super("耐久提醒", ModuleCategory.Player, GLFW.GLFW_KEY_UNKNOWN, false, true);
     }
 
     @Override
@@ -122,7 +122,7 @@ public class DurabilityAlert extends Module {
             String message = slotName(slot) + " " + stack.getHoverName().getString()
                     + ": " + remaining + " durability (" + remainingPercent + "%)";
             if (Client.notificationManager != null)
-                Client.notificationManager.addNotification("Low Durability", message);
+                Client.notificationManager.addNotification("低耐久", message);
             state.warned = true;
             state.lastAlertNanos = now;
         }

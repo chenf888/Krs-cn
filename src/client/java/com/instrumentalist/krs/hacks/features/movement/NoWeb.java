@@ -18,13 +18,13 @@ import java.util.Locale;
 
 public class NoWeb extends Module {
     @Setting
-    private final FloatValue speed = new FloatValue("Speed", 0.35f, 0.05f, 1.0f);
+    private final FloatValue speed = new FloatValue("速度", 0.35f, 0.05f, 1.0f);
 
     @Setting
-    private final BooleanValue vertical = new BooleanValue("Vertical", true);
+    private final BooleanValue vertical = new BooleanValue("垂直", true);
 
     public NoWeb() {
-        super("No Web", ModuleCategory.Movement, GLFW.GLFW_KEY_UNKNOWN, false, true);
+        super("防蜘蛛网", ModuleCategory.Movement, GLFW.GLFW_KEY_UNKNOWN, false, true);
     }
 
     @Override

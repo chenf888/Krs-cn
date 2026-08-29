@@ -8,19 +8,19 @@ import org.lwjgl.glfw.GLFW;
 public class ClientCape extends Module {
 
     @Setting
-    public static final BooleanValue customCape = new BooleanValue("Custom Cape", true);
+    public static final BooleanValue customCape = new BooleanValue("自定义披风", true);
 
     @Setting
-    public static final BooleanValue capeOverride = new BooleanValue("Cape Override", true, customCape::get);
+    public static final BooleanValue capeOverride = new BooleanValue("披风覆盖", true, customCape::get);
 
     @Setting
-    public static final BooleanValue enchantmentGlint = new BooleanValue("Enchantment Glint", true);
+    public static final BooleanValue enchantmentGlint = new BooleanValue("附魔光泽", true);
 
     @Setting
-    public static final BooleanValue oldCapeMovement = new BooleanValue("1.8 Cape Movement", true);
+    public static final BooleanValue oldCapeMovement = new BooleanValue("1.8披风摆动", true);
 
     public ClientCape() {
-        super("Client Cape", ModuleCategory.Render, GLFW.GLFW_KEY_UNKNOWN, false, false);
+        super("客户端披风", ModuleCategory.Render, GLFW.GLFW_KEY_UNKNOWN, false, false);
     }
 
     @Override

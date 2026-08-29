@@ -51,27 +51,25 @@ public class PlayerIndicator extends Module {
     private static final Comparator<IndicatorData> NEAREST_FIRST = Comparator.comparingDouble(data -> data.distanceSquared);
 
     @Setting
-    private static final ListValue targets = new ListValue(
-            "Targets",
+    private static final ListValue targets = new ListValue("目标",
             new String[]{"Off Screen", "All"},
             "Off Screen"
     );
 
     @Setting
-    private static final FloatValue radius = new FloatValue("Track Radius", 48f, 24f, 48f, "%");
+    private static final FloatValue radius = new FloatValue("追踪半径", 48f, 24f, 48f, "%");
 
     @Setting
-    private static final FloatValue size = new FloatValue("Scale", 15f, 8f, 24f, "px");
+    private static final FloatValue size = new FloatValue("缩放", 15f, 8f, 24f, "px");
 
     @Setting
-    private static final FloatValue thickness = new FloatValue("Thick", 1f, 1f, 5f, "px");
+    private static final FloatValue thickness = new FloatValue("粗细", 1f, 1f, 5f, "px");
 
     @Setting
-    private static final BooleanValue glow = new BooleanValue("Glow", true);
+    private static final BooleanValue glow = new BooleanValue("发光", true);
 
     @Setting
-    private static final FloatValue glowRadius = new FloatValue(
-            "Glow Radius",
+    private static final FloatValue glowRadius = new FloatValue("发光半径",
             8f,
             2f,
             18f,
@@ -80,30 +78,28 @@ public class PlayerIndicator extends Module {
     );
 
     @Setting
-    private static final BooleanValue pulse = new BooleanValue("Pulse", true, glow::get);
+    private static final BooleanValue pulse = new BooleanValue("脉冲", true, glow::get);
 
     @Setting
-    private static final ListValue colorMode = new ListValue(
-            "Color Mode",
+    private static final ListValue colorMode = new ListValue("颜色模式",
             new String[]{"Health", "Static"},
             "Health"
     );
 
     @Setting
-    private static final ColorValue color = new ColorValue(
-            "Color",
+    private static final ColorValue color = new ColorValue("颜色",
             new Color(0, 230, 255, 235),
             () -> colorMode.get().equalsIgnoreCase("Static")
     );
 
     @Setting
-    private static final BooleanValue ignoreTeams = new BooleanValue("Ignore Teams", true);
+    private static final BooleanValue ignoreTeams = new BooleanValue("忽略队伍", true);
 
     @Setting
-    private static final BooleanValue ignoreBots = new BooleanValue("Ignore Bots", true);
+    private static final BooleanValue ignoreBots = new BooleanValue("忽略机器人", true);
 
     @Setting
-    private static final IntValue maxDistance = new IntValue("Max Distance", 160, 16, 512, "m");
+    private static final IntValue maxDistance = new IntValue("最大距离", 160, 16, 512, "m");
 
     private final ArrayList<IndicatorData> indicators = new ArrayList<>(32);
     private final ArrayList<IndicatorData> indicatorPool = new ArrayList<>(32);
@@ -115,7 +111,7 @@ public class PlayerIndicator extends Module {
     private long playerHeadTextureGeneration;
 
     public PlayerIndicator() {
-        super("Player Indicator", ModuleCategory.Render, GLFW.GLFW_KEY_UNKNOWN, false, true);
+        super("玩家指示", ModuleCategory.Render, GLFW.GLFW_KEY_UNKNOWN, false, true);
     }
 
     @Override

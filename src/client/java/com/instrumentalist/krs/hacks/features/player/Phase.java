@@ -38,7 +38,7 @@ public class Phase extends Module {
     private static final int VANILLA_CORRECTION_COOLDOWN_TICKS = 5;
 
     @Setting
-    private final ListValue mode = new ListValue("Mode", new String[]{"Vanilla", "NCP", "AAC 4", "Hypixel", "Intave"}, "NCP");
+    private final ListValue mode = new ListValue("模式", new String[]{"Vanilla", "NCP", "AAC 4", "Hypixel", "Intave"}, "NCP");
 
     private boolean isClipping = false;
     private final TickTimer phaseTimer = new TickTimer();
@@ -49,7 +49,7 @@ public class Phase extends Module {
     private int vanillaCorrectionCooldown = 0;
 
     public Phase() {
-        super("Phase", ModuleCategory.Player, GLFW.GLFW_KEY_UNKNOWN, false, true);
+        super("穿墙", ModuleCategory.Player, GLFW.GLFW_KEY_UNKNOWN, false, true);
     }
 
     @Override

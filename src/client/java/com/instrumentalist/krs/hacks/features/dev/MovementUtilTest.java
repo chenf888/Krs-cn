@@ -16,14 +16,13 @@ import java.util.Locale;
 
 public class MovementUtilTest extends Module {
     @Setting
-    private final ListValue mode = new ListValue(
-            "Mode",
+    private final ListValue mode = new ListValue("模式",
             new String[]{"Info", "Strafe", "Smooth Strafe", "Accelerate", "Boost", "Limit", "Redirect", "Decelerate", "Friction", "Approach", "Vertical", "Jump", "Stop XZ", "Predict"},
             "Info"
     );
 
     @Setting
-    private final FloatValue speed = new FloatValue("Speed", 0.35f, 0.0f, 3.0f, () ->
+    private final FloatValue speed = new FloatValue("速度", 0.35f, 0.0f, 3.0f, () ->
             mode.get().equalsIgnoreCase("strafe")
                     || mode.get().equalsIgnoreCase("smooth strafe")
                     || mode.get().equalsIgnoreCase("accelerate")
@@ -34,7 +33,7 @@ public class MovementUtilTest extends Module {
     );
 
     @Setting
-    private final FloatValue maxSpeed = new FloatValue("Max Speed", 0.75f, 0.0f, 5.0f, () ->
+    private final FloatValue maxSpeed = new FloatValue("最大速度", 0.75f, 0.0f, 5.0f, () ->
             mode.get().equalsIgnoreCase("accelerate")
                     || mode.get().equalsIgnoreCase("boost")
                     || mode.get().equalsIgnoreCase("limit")
@@ -42,34 +41,34 @@ public class MovementUtilTest extends Module {
     );
 
     @Setting
-    private final FloatValue verticalSpeed = new FloatValue("Vertical Speed", 0.42f, 0.0f, 2.0f, () ->
+    private final FloatValue verticalSpeed = new FloatValue("垂直速度", 0.42f, 0.0f, 2.0f, () ->
             mode.get().equalsIgnoreCase("vertical")
                     || mode.get().equalsIgnoreCase("jump")
     );
 
     @Setting
-    private final FloatValue friction = new FloatValue("Friction", 0.08f, 0.0f, 1.0f, () ->
+    private final FloatValue friction = new FloatValue("摩擦力", 0.08f, 0.0f, 1.0f, () ->
             mode.get().equalsIgnoreCase("friction")
     );
 
     @Setting
-    private final BooleanValue logState = new BooleanValue("Log State", true);
+    private final BooleanValue logState = new BooleanValue("记录状态", true);
 
     @Setting
-    private final IntValue logInterval = new IntValue("Log Interval", 20, 1, 200, "t", logState::get);
+    private final IntValue logInterval = new IntValue("记录间隔", 20, 1, 200, "t", logState::get);
 
     @Setting
-    private final IntValue predictTicks = new IntValue("Predict Ticks", 5, 0, 40, "t", logState::get);
+    private final IntValue predictTicks = new IntValue("预测刻数", 5, 0, 40, "t", logState::get);
 
     private int ticks;
 
     public MovementUtilTest() {
-        super("Movement Util Test", ModuleCategory.Dev, GLFW.GLFW_KEY_UNKNOWN, false, true);
+        super("移动工具测试", ModuleCategory.Dev, GLFW.GLFW_KEY_UNKNOWN, false, true);
     }
 
     @Override
     public String description() {
-        return "Manual tester for MovementUtil helpers";
+        return "MovementUtil 工具的测试器";
     }
 
     @Override
@@ -119,7 +118,7 @@ public class MovementUtilTest extends Module {
 
     private void log(String message) {
         if (mc.player != null)
-            ChatUtil.printChat("MovementUtil Test: " + message);
+            ChatUtil.printChat("移动工具测试: " + message);
     }
 
     private String formatState() {

@@ -12,12 +12,12 @@ import java.util.Locale;
 
 public class AutoSneak extends Module {
     @Setting
-    private final ListValue mode = new ListValue("Mode", new String[]{"Always", "Air", "Edge", "Use Item", "Hurt"}, "Always");
+    private final ListValue mode = new ListValue("模式", new String[]{"Always", "Air", "Edge", "Use Item", "Hurt"}, "Always");
 
     private boolean pressingSneak = false;
 
     public AutoSneak() {
-        super("Auto Sneak", ModuleCategory.Movement, GLFW.GLFW_KEY_UNKNOWN, false, true);
+        super("自动潜行", ModuleCategory.Movement, GLFW.GLFW_KEY_UNKNOWN, false, true);
     }
 
     @Override

@@ -31,16 +31,16 @@ import org.lwjgl.glfw.GLFW;
 public class CivBreak extends Module {
 
     @Setting
-    private static final ListValue mode = new ListValue("Mode", new String[]{"Instant", "Wait One Break", "Legit"}, "Instant");
+    private static final ListValue mode = new ListValue("模式", new String[]{"Instant", "Wait One Break", "Legit"}, "Instant");
 
     @Setting
-    private static final FloatValue range = new FloatValue("Range", 3f, 0.1f, 6f, "m");
+    private static final FloatValue range = new FloatValue("范围", 3f, 0.1f, 6f, "m");
 
     @Setting
-    private static final IntValue fastSpeed = new IntValue("Fast Speed", 10, 1, 10, () -> mode.get().equalsIgnoreCase("instant") || mode.get().equalsIgnoreCase("wait one break"));
+    private static final IntValue fastSpeed = new IntValue("快速速度", 10, 1, 10, () -> mode.get().equalsIgnoreCase("instant") || mode.get().equalsIgnoreCase("wait one break"));
 
     @Setting
-    private static final BooleanValue rotations = new BooleanValue("Rotations", true);
+    private static final BooleanValue rotations = new BooleanValue("旋转", true);
 
     private static boolean wasBreaking = false;
 
@@ -51,7 +51,7 @@ public class CivBreak extends Module {
     private int stage = 0;
 
     public CivBreak() {
-        super("Civ Break", ModuleCategory.Level, GLFW.GLFW_KEY_UNKNOWN, false, true);
+        super("文明破坏", ModuleCategory.Level, GLFW.GLFW_KEY_UNKNOWN, false, true);
     }
 
     @Override

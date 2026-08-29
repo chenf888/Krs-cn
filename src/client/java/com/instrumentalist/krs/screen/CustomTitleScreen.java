@@ -47,13 +47,13 @@ public class CustomTitleScreen extends Screen implements IMinecraft {
     private boolean musicVolumeSliderDragging;
     private boolean musicVolumeDirty;
 
-    private final MenuButton singlePlayerButton = new MenuButton("Single Player");
-    private final MenuButton multiPlayerButton = new MenuButton("Multi Player");
-    private final MenuButton realmsButton = new MenuButton("Realms");
-    private final MenuButton friendsButton = new MenuButton("Friends");
-    private final MenuButton optionsButton = new MenuButton("Options");
-    private final MenuButton updateAvailableButton = new MenuButton("Update Available");
-    private final MenuButton exitButton = new MenuButton("Exit");
+    private final MenuButton singlePlayerButton = new MenuButton("单人游戏");
+    private final MenuButton multiPlayerButton = new MenuButton("多人游戏");
+    private final MenuButton realmsButton = new MenuButton("领域");
+    private final MenuButton friendsButton = new MenuButton("好友");
+    private final MenuButton optionsButton = new MenuButton("选项");
+    private final MenuButton updateAvailableButton = new MenuButton("发现更新");
+    private final MenuButton exitButton = new MenuButton("退出");
     private final List<MenuButton> menuButtons = List.of(
             singlePlayerButton,
             multiPlayerButton,
@@ -158,7 +158,7 @@ public class CustomTitleScreen extends Screen implements IMinecraft {
         float knobX = sliderX + filledWidth;
         Color accent = hovered ? new Color(255, 215, 0, 245) : new Color(255, 215, 0, 215);
 
-        String sliderText = volume == 0f ? "Music OFF" : "Volume: " + Math.round(volume * 100f) + "%";
+        String sliderText = volume == 0f ? "音乐已关闭" : "音量: " + Math.round(volume * 100f) + "%";
         NVGFonts.INTER.drawText(sliderText, centerX, sliderY - 10f, 12f, hovered ? Color.YELLOW : Color.WHITE, Alignment.CENTER_MIDDLE, true);
         vg.roundedRectangle(sliderX, sliderY, MUSIC_SLIDER_WIDTH, MUSIC_SLIDER_TRACK_HEIGHT, 3f, new Color(20, 20, 20, 190));
         vg.roundedRectangle(sliderX, sliderY, filledWidth, MUSIC_SLIDER_TRACK_HEIGHT, 3f, accent);
@@ -291,7 +291,7 @@ public class CustomTitleScreen extends Screen implements IMinecraft {
         vg.flushEffectBatch();
 
         vg.roundedRectangle(panelX, panelY, panelWidth, panelHeight, 8f, new Color(10, 10, 10, 165));
-        NVGFonts.INTER_MEDIUM.drawText("Loading", panelX + 22f, panelY + 12f, 15f, new Color(255, 255, 255, 230), Alignment.LEFT_TOP, true);
+        NVGFonts.INTER_MEDIUM.drawText("加载中", panelX + 22f, panelY + 12f, 15f, new Color(255, 255, 255, 230), Alignment.LEFT_TOP, true);
         vg.roundedRectangle(trackX, trackY, trackWidth, trackHeight, 3f, new Color(255, 255, 255, 45));
 
         float phase = (System.currentTimeMillis() % 1350L) / 1350f;
@@ -362,13 +362,13 @@ public class CustomTitleScreen extends Screen implements IMinecraft {
             if (ensureTexture(vg, "icon", "assets/krs/icon.png"))
                 vg.texturedRoundedRectangle(iconX, iconY, iconSize, iconSize, 10f, "icon");
 
-            NVGFonts.INTER_MEDIUM.drawText("Welcome to Krs Client (v" + Client.clientVersion + ")", 8f, screenHeight - 8f, 22f, Color.WHITE, Alignment.LEFT_BOTTOM, true);
+            NVGFonts.INTER_MEDIUM.drawText("欢迎使用 Krs Client (v" + Client.clientVersion + ") (汉化 by chenf888)", 8f, screenHeight - 8f, 22f, Color.WHITE, Alignment.LEFT_BOTTOM, true);
             NVGFonts.INTER_MEDIUM.drawText(getCurrentTime(), screenWidth - 10f, 10f, 22f, Color.WHITE, Alignment.RIGHT_TOP, true);
-            NVGFonts.INTER.drawText("Currently Logged Into: " + mc.getUser().getName(), centerX, 20f, 21f, Color.WHITE, Alignment.CENTER_TOP, true);
+            NVGFonts.INTER.drawText("当前登录: " + mc.getUser().getName(), centerX, 20f, 21f, Color.WHITE, Alignment.CENTER_TOP, true);
             renderMusicVolumeSlider(vg, centerX, mouseX, mouseY);
 
             if (GraphicsApiCompatibility.usesCompatibilityRenderer()) {
-                NVGFonts.INTER.drawText("Vulkan support is not yet complete, so performance will be significantly lower than when using OpenGL. Please use OpenGL unless there is a specific reason not to.", centerX, 80f, 21f, Color.CYAN, Alignment.CENTER_TOP, true);
+                NVGFonts.INTER.drawText("Vulkan 支持尚未完善,性能将明显低于 OpenGL。如无特殊原因,请使用 OpenGL。", centerX, 80f, 21f, Color.CYAN, Alignment.CENTER_TOP, true);
             }
 
             for (int i = 0; i < visibleMenuButtons.size(); i++)
@@ -422,19 +422,19 @@ public class CustomTitleScreen extends Screen implements IMinecraft {
 
                 if (isHovered(mouseX, mouseY, centerX, centerY + y, 200f, 38f)) {
                     switch (label) {
-                        case "Single Player":
+                        case "单人游戏":
                             mc.gui.setScreen(new SelectWorldScreen(this));
                             return true;
 
-                        case "Multi Player":
+                        case "多人游戏":
                             mc.gui.setScreen(new JoinMultiplayerScreen(this));
                             return true;
 
-                        case "Realms":
+                        case "领域":
                             mc.gui.setScreen(new RealmsMainScreen(this));
                             return true;
 
-                        case "Friends":
+                        case "好友":
                             OnlineOptionsScreen.confirmFriendsListEnabled(
                                     mc,
                                     () -> mc.gui.setScreen(new FriendsOverlayScreen(this)),
@@ -442,15 +442,15 @@ public class CustomTitleScreen extends Screen implements IMinecraft {
                             );
                             return true;
 
-                        case "Options":
+                        case "选项":
                             mc.gui.setScreen(new OptionsScreen(this, mc.options, false));
                             return true;
 
-                        case "Update Available":
+                        case "发现更新":
                             FileUtil.INSTANCE.openInBrowser(RELEASES_URL);
                             return true;
 
-                        case "Exit":
+                        case "退出":
                             stopMainMenuMusic();
                             mc.stop();
                             return true;

@@ -53,46 +53,44 @@ public class NoteBot extends Module {
     private static final long LOAD_TIMEOUT_NANOS = 60_000_000_000L;
 
     @Setting
-    private final TextValue nbsPath = new TextValue("NBS Path", "");
+    private final TextValue nbsPath = new TextValue("NBS路径", "");
 
     @Setting
-    private final ListValue mode = new ListValue(
-            "Mode",
+    private final ListValue mode = new ListValue("模式",
             new String[]{"Exact Instruments", "Any Instrument"},
             "Exact Instruments"
     );
 
     @Setting
-    private final ListValue instrumentDetect = new ListValue(
-            "Instrument Detect",
+    private final ListValue instrumentDetect = new ListValue("乐器检测",
             new String[]{"Block State", "Below Block"},
             "Block State",
             this::isExactModeSelected
     );
 
     @Setting
-    private final IntValue tuneDelay = new IntValue("Tune Delay", 1, 1, 20, "t");
+    private final IntValue tuneDelay = new IntValue("调音延迟", 1, 1, 20, "t");
 
     @Setting
-    private final IntValue concurrentTuneBlocks = new IntValue("Concurrent Tune Blocks", 1, 1, 20);
+    private final IntValue concurrentTuneBlocks = new IntValue("并发调音方块", 1, 1, 20);
 
     @Setting
-    private final IntValue recheckDelay = new IntValue("Recheck Delay", 10, 1, 40, "t");
+    private final IntValue recheckDelay = new IntValue("复检延迟", 10, 1, 40, "t");
 
     @Setting
-    private final BooleanValue polyphonic = new BooleanValue("Polyphonic", true);
+    private final BooleanValue polyphonic = new BooleanValue("和弦", true);
 
     @Setting
-    private final BooleanValue autoRotate = new BooleanValue("Auto Rotate", true);
+    private final BooleanValue autoRotate = new BooleanValue("自动旋转", true);
 
     @Setting
-    private final BooleanValue swingArm = new BooleanValue("Swing Arm", true);
+    private final BooleanValue swingArm = new BooleanValue("挥动手臂", true);
 
     @Setting
-    private final BooleanValue roundOutOfRange = new BooleanValue("Round Out Of Range", false);
+    private final BooleanValue roundOutOfRange = new BooleanValue("超范围取整", false);
 
     @Setting
-    private final BooleanValue loop = new BooleanValue("Loop", false);
+    private final BooleanValue loop = new BooleanValue("循环", false);
 
     private final Map<Note, BlockPos> noteBlockPositions = new LinkedHashMap<>();
     private final Map<BlockPos, Integer> tuneHits = new LinkedHashMap<>();
@@ -109,12 +107,12 @@ public class NoteBot extends Module {
     private boolean controllingRotation;
 
     public NoteBot() {
-        super("Note Bot", ModuleCategory.Level, GLFW.GLFW_KEY_UNKNOWN, false, true);
+        super("音符机器人", ModuleCategory.Level, GLFW.GLFW_KEY_UNKNOWN, false, true);
     }
 
     @Override
     public String description() {
-        return "Loads an NBS file, tunes nearby note blocks, and plays the song";
+        return "加载 NBS 文件,调音附近音符方块并播放曲目";
     }
 
     @Override
@@ -607,7 +605,7 @@ public class NoteBot extends Module {
     }
 
     private void notifyPlayer(String message) {
-        ChatUtil.printChat("[Note Bot] " + message);
+        ChatUtil.printChat("[音符机器人] " + message);
     }
 
     private static String readableMessage(Throwable failure) {

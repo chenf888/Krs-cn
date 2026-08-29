@@ -13,7 +13,7 @@ import org.lwjgl.glfw.GLFW;
 public class NoCombatDelay extends Module {
 
     public NoCombatDelay() {
-        super("No Combat Delay", ModuleCategory.Combat, GLFW.GLFW_KEY_UNKNOWN, false, true);
+        super("无战斗冷却", ModuleCategory.Combat, GLFW.GLFW_KEY_UNKNOWN, false, true);
     }
 
     @Override

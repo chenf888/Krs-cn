@@ -8,10 +8,10 @@ import org.lwjgl.glfw.GLFW;
 
 public class Rotations extends Module {
     @Setting
-    public static final BooleanValue vanilla = new BooleanValue("Vanilla", true);
+    public static final BooleanValue vanilla = new BooleanValue("原版", true);
 
     public Rotations() {
-        super("Rotations", ModuleCategory.Render, GLFW.GLFW_KEY_UNKNOWN, true, false);
+        super("旋转", ModuleCategory.Render, GLFW.GLFW_KEY_UNKNOWN, true, false);
     }
 
     public static boolean shouldUseVanilla() {

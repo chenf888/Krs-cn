@@ -62,7 +62,7 @@ import java.util.WeakHashMap;
 public class ESP extends Module {
 
     @Setting
-    private static final BooleanValue local = new BooleanValue("Local", true);
+    private static final BooleanValue local = new BooleanValue("本地", true);
 
     private static final Matrix4f VIEW_PROJECTION = new Matrix4f();
     private static final FloatArrayBuilder TRIANGLES = new FloatArrayBuilder(4096);
@@ -88,7 +88,7 @@ public class ESP extends Module {
     private static boolean itemCaptureArmor = false;
 
     public ESP() {
-        super("ESP", ModuleCategory.Render, GLFW.GLFW_KEY_UNKNOWN, false, true);
+        super("透视", ModuleCategory.Render, GLFW.GLFW_KEY_UNKNOWN, false, true);
     }
 
     @Override

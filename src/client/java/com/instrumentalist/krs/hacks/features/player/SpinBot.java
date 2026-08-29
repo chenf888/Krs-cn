@@ -12,20 +12,18 @@ import org.lwjgl.glfw.GLFW;
 public class SpinBot extends Module {
 
     public SpinBot() {
-        super("Spin Bot", ModuleCategory.Player, GLFW.GLFW_KEY_UNKNOWN, false, true);
+        super("旋转机器人", ModuleCategory.Player, GLFW.GLFW_KEY_UNKNOWN, false, true);
     }
 
     @Setting
-    private final FloatValue spinSpeed = new FloatValue(
-            "Spin Speed",
+    private final FloatValue spinSpeed = new FloatValue("旋转速度",
             30f,
             -40f,
             40f
     );
 
     @Setting
-    private final FloatValue pitch = new FloatValue(
-            "Pitch",
+    private final FloatValue pitch = new FloatValue("俯仰角",
             90f,
             -90f,
             90f

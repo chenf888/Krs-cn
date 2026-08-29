@@ -13,31 +13,31 @@ import org.lwjgl.glfw.GLFW;
 public class Teams extends Module {
 
     @Setting
-    private static final BooleanValue scoreboardTeam = new BooleanValue("Scoreboard Team", true);
+    private static final BooleanValue scoreboardTeam = new BooleanValue("计分板队伍", true);
 
     @Setting
-    private static final BooleanValue nameColor = new BooleanValue("Name Color", false);
+    private static final BooleanValue nameColor = new BooleanValue("名字颜色", false);
 
     @Setting
-    private static final BooleanValue prefix = new BooleanValue("Prefix", false);
+    private static final BooleanValue prefix = new BooleanValue("前缀", false);
 
     @Setting
-    private static final BooleanValue armorColor = new BooleanValue("Armor Color", false);
+    private static final BooleanValue armorColor = new BooleanValue("盔甲颜色", false);
 
     @Setting
-    private static final BooleanValue helmet = new BooleanValue("Helmet", true, armorColor::get);
+    private static final BooleanValue helmet = new BooleanValue("头盔", true, armorColor::get);
 
     @Setting
-    private static final BooleanValue chestPlate = new BooleanValue("Chest Plate", true, armorColor::get);
+    private static final BooleanValue chestPlate = new BooleanValue("胸甲", true, armorColor::get);
 
     @Setting
-    private static final BooleanValue leggings = new BooleanValue("Leggings", true, armorColor::get);
+    private static final BooleanValue leggings = new BooleanValue("护腿", true, armorColor::get);
 
     @Setting
-    private static final BooleanValue boots = new BooleanValue("Boots", true, armorColor::get);
+    private static final BooleanValue boots = new BooleanValue("靴子", true, armorColor::get);
 
     public Teams() {
-        super("Teams", ModuleCategory.Combat, GLFW.GLFW_KEY_UNKNOWN, false, false);
+        super("队伍识别", ModuleCategory.Combat, GLFW.GLFW_KEY_UNKNOWN, false, false);
     }
 
     @Override

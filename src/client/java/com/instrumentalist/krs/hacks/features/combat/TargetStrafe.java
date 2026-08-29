@@ -33,19 +33,18 @@ public class TargetStrafe extends Module {
     private static float steeringOffset;
 
     public TargetStrafe() {
-        super("Target Strafe", ModuleCategory.Combat, GLFW.GLFW_KEY_UNKNOWN, false, true);
+        super("目标环绕", ModuleCategory.Combat, GLFW.GLFW_KEY_UNKNOWN, false, true);
     }
 
     @Setting
-    public static FloatValue distance = new FloatValue(
-            "Distance",
+    public static FloatValue distance = new FloatValue("距离",
             1f,
             0f,
             8f
     );
 
     @Setting
-    private static final BooleanValue jumpOnly = new BooleanValue("Jump Only", true);
+    private static final BooleanValue jumpOnly = new BooleanValue("仅跳跃", true);
 
     public static int direction = 1;
 
@@ -392,7 +391,7 @@ public class TargetStrafe extends Module {
 
     @Override
     public String description() {
-        return "Use by pressing only the forward key";
+        return "仅按前进键即可使用";
     }
 
     @Override

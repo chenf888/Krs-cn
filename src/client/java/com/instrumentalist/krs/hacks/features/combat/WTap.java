@@ -16,10 +16,10 @@ import org.lwjgl.glfw.GLFW;
 
 public class WTap extends Module {
     @Setting
-    private final FloatValue delay = new FloatValue("Delay", 5.5f, 0.0f, 10.0f, "t");
+    private final FloatValue delay = new FloatValue("延迟", 5.5f, 0.0f, 10.0f, "t");
 
     @Setting
-    private final FloatValue duration = new FloatValue("Duration", 1.5f, 1.0f, 5.0f, "t");
+    private final FloatValue duration = new FloatValue("持续时间", 1.5f, 1.0f, 5.0f, "t");
 
     private final MSTimer attackTimer = new MSTimer();
     private boolean active = false;
@@ -28,7 +28,7 @@ public class WTap extends Module {
     private long durationTicks = 0L;
 
     public WTap() {
-        super("WTap", ModuleCategory.Combat, GLFW.GLFW_KEY_UNKNOWN, false, true);
+        super("W连点", ModuleCategory.Combat, GLFW.GLFW_KEY_UNKNOWN, false, true);
     }
 
     @Override

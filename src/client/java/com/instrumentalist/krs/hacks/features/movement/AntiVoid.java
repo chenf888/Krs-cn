@@ -16,16 +16,16 @@ import org.lwjgl.glfw.GLFW;
 
 public class AntiVoid extends Module {
     @Setting
-    private final BooleanValue stopXZ = new BooleanValue("StopXZ", true);
+    private final BooleanValue stopXZ = new BooleanValue("停止XZ", true);
 
     @Setting
-    private final IntValue distance = new IntValue("Distance", 6, 0, 10);
+    private final IntValue distance = new IntValue("距离", 6, 0, 10);
 
     private int canTick = 0;
     private Integer unSafeY = null;
 
     public AntiVoid() {
-        super("Anti Void", ModuleCategory.Movement, GLFW.GLFW_KEY_UNKNOWN, false, true);
+        super("防虚空", ModuleCategory.Movement, GLFW.GLFW_KEY_UNKNOWN, false, true);
     }
 
     @Override
@@ -83,7 +83,7 @@ public class AntiVoid extends Module {
 
         if (event.packet instanceof ClientboundPlayerPositionPacket && BlinkUtil.INSTANCE.getBlinking() && unSafeY != null) {
             canTick = 80;
-            Client.notificationManager.addNotification("Temporary disabled", "AntiVoid flagged (wait for " + canTick + "s to re-activate)");
+            Client.notificationManager.addNotification("临时禁用", "AntiVoid flagged (wait for " + canTick + "s to re-activate)");
             BlinkUtil.INSTANCE.sync(true);
             BlinkUtil.INSTANCE.stopBlink();
             if (stopXZ.get())

@@ -14,22 +14,22 @@ import java.util.Locale;
 
 public class Spider extends Module {
     @Setting
-    private final ListValue mode = new ListValue("Mode", new String[]{"Vanilla", "Timer", "Pulse"}, "Vanilla");
+    private final ListValue mode = new ListValue("模式", new String[]{"Vanilla", "Timer", "Pulse"}, "Vanilla");
 
     @Setting
-    private final FloatValue speed = new FloatValue("Speed", 0.32f, 0.1f, 1f, () -> !mode.get().equalsIgnoreCase("timer"));
+    private final FloatValue speed = new FloatValue("速度", 0.32f, 0.1f, 1f, () -> !mode.get().equalsIgnoreCase("timer"));
 
     @Setting
-    private final FloatValue timerSpeed = new FloatValue("Timer Speed", 1.7f, 1.1f, 4f, () -> mode.get().equalsIgnoreCase("timer"));
+    private final FloatValue timerSpeed = new FloatValue("计时器速度", 1.7f, 1.1f, 4f, () -> mode.get().equalsIgnoreCase("timer"));
 
     @Setting
-    private final BooleanValue onlyMoving = new BooleanValue("Only Moving", true);
+    private final BooleanValue onlyMoving = new BooleanValue("仅移动", true);
 
     private boolean timered = false;
     private int pulseTicks = 0;
 
     public Spider() {
-        super("Spider", ModuleCategory.Movement, GLFW.GLFW_KEY_UNKNOWN, false, true);
+        super("蜘蛛爬墙", ModuleCategory.Movement, GLFW.GLFW_KEY_UNKNOWN, false, true);
     }
 
     @Override

@@ -27,22 +27,20 @@ import net.minecraft.world.phys.Vec3;
 public class Step extends Module {
 
     public Step() {
-        super("Step", ModuleCategory.Movement, GLFW.GLFW_KEY_UNKNOWN, false, true);
+        super("自动上台阶", ModuleCategory.Movement, GLFW.GLFW_KEY_UNKNOWN, false, true);
     }
 
     @Setting
-    private static final ListValue mode = new ListValue(
-            "Mode",
+    private static final ListValue mode = new ListValue("模式",
             new String[]{"Vanilla", "NCP", "Hypixel"},
             "Vanilla"
     );
 
     @Setting
-    private static final BooleanValue disableWhenSpeed = new BooleanValue("Disable when Speed", true);
+    private static final BooleanValue disableWhenSpeed = new BooleanValue("加速时禁用", true);
 
     @Setting
-    private static final FloatValue height = new FloatValue(
-            "Height",
+    private static final FloatValue height = new FloatValue("高度",
             2f,
             1f,
             10f,
@@ -50,19 +48,17 @@ public class Step extends Module {
     );
 
     @Setting
-    private static final IntValue delay = new IntValue(
-            "Delay",
+    private static final IntValue delay = new IntValue("延迟",
             1,
             1,
             10
     );
 
     @Setting
-    private static final BooleanValue customTimer = new BooleanValue("Custom Timer", true);
+    private static final BooleanValue customTimer = new BooleanValue("自定义计时器", true);
 
     @Setting
-    private static final FloatValue timerSpeed = new FloatValue(
-            "Timer Speed",
+    private static final FloatValue timerSpeed = new FloatValue("计时器速度",
             0.6f,
             0.1f,
             10f,

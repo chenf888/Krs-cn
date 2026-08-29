@@ -13,7 +13,7 @@ import org.lwjgl.glfw.GLFW;
 public class AirPlace extends Module {
 
     public AirPlace() {
-        super("Air Place", ModuleCategory.Player, GLFW.GLFW_KEY_UNKNOWN, false, true);
+        super("空中放置", ModuleCategory.Player, GLFW.GLFW_KEY_UNKNOWN, false, true);
     }
 
     public static HitResult createPlacementHit(HitResult original, LocalPlayer player) {

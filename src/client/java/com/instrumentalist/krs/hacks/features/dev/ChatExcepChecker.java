@@ -12,7 +12,7 @@ import net.minecraft.network.protocol.game.ClientboundSystemChatPacket;
 public class ChatExcepChecker extends Module {
 
     public ChatExcepChecker() {
-        super("Chat Excep Checker", ModuleCategory.Dev, GLFW.GLFW_KEY_UNKNOWN, false, true);
+        super("聊天异常检查", ModuleCategory.Dev, GLFW.GLFW_KEY_UNKNOWN, false, true);
     }
 
     @Override

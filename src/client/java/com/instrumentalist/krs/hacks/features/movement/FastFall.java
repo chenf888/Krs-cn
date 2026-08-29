@@ -10,13 +10,13 @@ import org.lwjgl.glfw.GLFW;
 
 public class FastFall extends Module {
     @Setting
-    private final ListValue mode = new ListValue("Mode", new String[]{"Shift", "Always"}, "Shift");
+    private final ListValue mode = new ListValue("模式", new String[]{"Shift", "Always"}, "Shift");
 
     @Setting
-    private final FloatValue motion = new FloatValue("Motion", 0.8f, 0.1f, 4.0f);
+    private final FloatValue motion = new FloatValue("运动", 0.8f, 0.1f, 4.0f);
 
     public FastFall() {
-        super("Fast Fall", ModuleCategory.Movement, GLFW.GLFW_KEY_UNKNOWN, false, true);
+        super("快速下落", ModuleCategory.Movement, GLFW.GLFW_KEY_UNKNOWN, false, true);
     }
 
     @Override

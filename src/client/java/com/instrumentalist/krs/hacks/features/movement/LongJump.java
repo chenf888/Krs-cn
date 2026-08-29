@@ -23,14 +23,13 @@ import org.lwjgl.glfw.GLFW;
 public class LongJump extends Module {
 
     @Setting
-    private final ListValue longJumpMode = new ListValue(
-            "Long Jump Mode",
+    private final ListValue longJumpMode = new ListValue("远跳模式",
             new String[]{"Matrix", "Grim"},
             "Matrix"
     );
 
     @Setting
-    public static final BooleanValue airViewBobbing = new BooleanValue("Air View Bobbing", true);
+    public static final BooleanValue airViewBobbing = new BooleanValue("空中视角摆动", true);
 
     private boolean start;
     private Vec3 matrix2StartCameraPosition = Vec3.ZERO;
@@ -39,7 +38,7 @@ public class LongJump extends Module {
     private int grimTicks;
 
     public LongJump() {
-        super("Long Jump", ModuleCategory.Movement, GLFW.GLFW_KEY_UNKNOWN, false, true);
+        super("远跳", ModuleCategory.Movement, GLFW.GLFW_KEY_UNKNOWN, false, true);
     }
 
     @Override

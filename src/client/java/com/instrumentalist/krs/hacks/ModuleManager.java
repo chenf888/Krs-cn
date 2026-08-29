@@ -220,12 +220,12 @@ public class ModuleManager implements EventListener {
                 module.toggle();
             else if (module.tempEnabled && (module instanceof InvManager || module instanceof ChestStealer || module instanceof Scaffold || module instanceof KillAura || module instanceof Stasis)) {
                 module.toggle();
-                Client.notificationManager.addNotification("World Change", "Automatically disabled " + module.moduleName);
+                Client.notificationManager.addNotification("世界变更", "Automatically disabled " + module.moduleName);
             }
         }
 
         if (!ModuleManager.getModuleState(Breaker.class) && Breaker.resetAutoWhitelist(true))
-            Client.notificationManager.addNotification("Auto Whitelist", "Reset bed whitelist");
+            Client.notificationManager.addNotification("自动白名单", "已重置床白名单");
 
         if (Client.loaded && event.previousWorld != null)
             Client.configManager.saveCurrentIfFilesExist();

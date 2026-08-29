@@ -7,7 +7,7 @@ import org.lwjgl.glfw.GLFW;
 public class FPSBobbing extends Module {
 
     public FPSBobbing() {
-        super("FPS Bobbing", ModuleCategory.Render, GLFW.GLFW_KEY_UNKNOWN, false, false);
+        super("FPS摆动", ModuleCategory.Render, GLFW.GLFW_KEY_UNKNOWN, false, false);
     }
 
     @Override

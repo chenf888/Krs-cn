@@ -15,10 +15,10 @@ import java.util.Locale;
 public class ItemDropChanger extends Module {
 
     @Setting
-    public static final ListValue mode = new ListValue("Mode", new String[]{"Packet", "No Order"}, "No Order");
+    public static final ListValue mode = new ListValue("模式", new String[]{"Packet", "No Order"}, "No Order");
 
     public ItemDropChanger() {
-        super("Item Drop Changer", ModuleCategory.Level, GLFW.GLFW_KEY_UNKNOWN, false, false);
+        super("物品掉落修改", ModuleCategory.Level, GLFW.GLFW_KEY_UNKNOWN, false, false);
     }
 
     public static boolean hookDropItemSwing(InteractionHand hand) {

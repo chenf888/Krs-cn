@@ -19,15 +19,15 @@ import java.util.Locale;
 
 public class MiddleClick extends Module {
     @Setting
-    private final ListValue itemMode = new ListValue("Item", new String[]{"Pearl", "Firework", "Wind Charge"}, "Pearl");
+    private final ListValue itemMode = new ListValue("物品", new String[]{"Pearl", "Firework", "Wind Charge"}, "Pearl");
 
     @Setting
-    private final IntValue delay = new IntValue("Delay", 250, 0, 2000, "ms");
+    private final IntValue delay = new IntValue("延迟", 250, 0, 2000, "ms");
 
     private final MSTimer useTimer = new MSTimer();
 
     public MiddleClick() {
-        super("Middle Click", ModuleCategory.Player, GLFW.GLFW_KEY_UNKNOWN, false, true);
+        super("中键点击", ModuleCategory.Player, GLFW.GLFW_KEY_UNKNOWN, false, true);
     }
 
     @Override

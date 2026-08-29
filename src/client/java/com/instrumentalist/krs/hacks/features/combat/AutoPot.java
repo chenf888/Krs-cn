@@ -52,7 +52,7 @@ public class AutoPot extends Module {
     private final ArrayList<Holder<MobEffect>> needPots = new ArrayList<>(potions.size());
 
     public AutoPot() {
-        super("Auto Pot", ModuleCategory.Combat, GLFW.GLFW_KEY_UNKNOWN, false, true);
+        super("自动喝药", ModuleCategory.Combat, GLFW.GLFW_KEY_UNKNOWN, false, true);
     }
 
     @Override

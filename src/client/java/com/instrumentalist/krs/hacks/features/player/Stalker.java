@@ -27,7 +27,7 @@ import net.minecraft.world.phys.Vec3;
 public class Stalker extends Module {
 
     public Stalker() {
-        super("Stalker", ModuleCategory.Player, GLFW.GLFW_KEY_UNKNOWN, false, true);
+        super("跟踪者", ModuleCategory.Player, GLFW.GLFW_KEY_UNKNOWN, false, true);
     }
 
     private int targetIndex = 0;
@@ -36,7 +36,7 @@ public class Stalker extends Module {
 
     @Override
     public String description() {
-        return "Switch target with left and right key";
+        return "按左/右键切换目标";
     }
 
     @Override

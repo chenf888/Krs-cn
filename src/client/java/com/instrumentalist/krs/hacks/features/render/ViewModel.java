@@ -20,43 +20,43 @@ import java.util.Locale;
 public class ViewModel extends Module {
 
     @Setting
-    public static final FloatValue itemSize = new FloatValue("Item Size", 0f, -2f, 2f);
+    public static final FloatValue itemSize = new FloatValue("物品大小", 0f, -2f, 2f);
 
     @Setting
-    public static final FloatValue itemFov = new FloatValue("Item Fov", 0f, -2f, 2f);
+    public static final FloatValue itemFov = new FloatValue("物品视野", 0f, -2f, 2f);
 
     @Setting
-    public static final FloatValue itemPositionX = new FloatValue("Item Position X", 0f, -2f, 2f);
+    public static final FloatValue itemPositionX = new FloatValue("物品位置X", 0f, -2f, 2f);
 
     @Setting
-    public static final FloatValue itemPositionY = new FloatValue("Item Position Y", 0f, -2f, 2f);
+    public static final FloatValue itemPositionY = new FloatValue("物品位置Y", 0f, -2f, 2f);
 
     @Setting
-    public static final FloatValue itemPositionZ = new FloatValue("Item Position Z", 0f, -2f, 2f);
+    public static final FloatValue itemPositionZ = new FloatValue("物品位置Z", 0f, -2f, 2f);
 
     @Setting
-    public static final BooleanValue noEquipAnimation = new BooleanValue("No Equip Animation", false);
+    public static final BooleanValue noEquipAnimation = new BooleanValue("无装备动画", false);
 
     @Setting
-    public static final BooleanValue fluxSwing = new BooleanValue("Flux Swing", false);
+    public static final BooleanValue fluxSwing = new BooleanValue("Flux挥动", false);
 
     @Setting
-    public static final BooleanValue oldEatSwing = new BooleanValue("Old Eat Swing", false);
+    public static final BooleanValue oldEatSwing = new BooleanValue("旧版进食挥动", false);
 
     @Setting
-    public static final BooleanValue oldItemPosition = new BooleanValue("Old Item Position", false);
+    public static final BooleanValue oldItemPosition = new BooleanValue("旧版物品位置", false);
 
     @Setting
-    public static final BooleanValue punchingABlockWhileDoingStuff = new BooleanValue("Punching a block while doing stuff", false);
+    public static final BooleanValue punchingABlockWhileDoingStuff = new BooleanValue("做动作时攻击方块", false);
 
     @Setting
-    private static final BooleanValue slowSwing = new BooleanValue("Slow Swing", false);
+    private static final BooleanValue slowSwing = new BooleanValue("慢速挥动", false);
 
     @Setting
-    private static final IntValue setSwingSpeed = new IntValue("Set Swing Speed", 5, -5, 20, slowSwing::get);
+    private static final IntValue setSwingSpeed = new IntValue("设置挥动速度", 5, -5, 20, slowSwing::get);
 
     public ViewModel() {
-        super("View Model", ModuleCategory.Render, GLFW.GLFW_KEY_UNKNOWN, true, false);
+        super("视角模型", ModuleCategory.Render, GLFW.GLFW_KEY_UNKNOWN, true, false);
     }
 
     @Override

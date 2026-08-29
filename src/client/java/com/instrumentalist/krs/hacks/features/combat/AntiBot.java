@@ -29,7 +29,7 @@ import java.util.UUID;
 public class AntiBot extends Module {
 
     @Setting
-    private static final ListValue mode = new ListValue("Mode", new String[]{"Advanced", "Hypixel", "Cubecraft", "Cubecraft Bedrock", "Shotbow"}, "Advanced");
+    private static final ListValue mode = new ListValue("模式", new String[]{"Advanced", "Hypixel", "Cubecraft", "Cubecraft Bedrock", "Shotbow"}, "Advanced");
 
     private static final HashSet<UUID> suspectList = new HashSet<>();
     private static final HashSet<UUID> botList = new HashSet<>();
@@ -41,7 +41,7 @@ public class AntiBot extends Module {
     private final HashSet<UUID> listedPlayerProfiles = new HashSet<>();
 
     public AntiBot() {
-        super("Anti Bot", ModuleCategory.Combat, GLFW.GLFW_KEY_UNKNOWN, false, true);
+        super("反机器人", ModuleCategory.Combat, GLFW.GLFW_KEY_UNKNOWN, false, true);
     }
 
     @Override

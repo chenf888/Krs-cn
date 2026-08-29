@@ -30,7 +30,7 @@ public class Backtrack extends Module {
     private static final int MAX_STORED_PACKETS = 512;
 
     @Setting
-    private final IntValue trackDelay = new IntValue("Track Delay", 200, 0, 2000, "ms");
+    private final IntValue trackDelay = new IntValue("回溯延迟", 200, 0, 2000, "ms");
 
     private final ArrayDeque<Packet<?>> storagePackets = new ArrayDeque<>();
     private final ArrayDeque<EntityPacketLoc> storageEntityMove = new ArrayDeque<>();
@@ -47,7 +47,7 @@ public class Backtrack extends Module {
     private volatile boolean needFreeze = false;
 
     public Backtrack() {
-        super("Backtrack", ModuleCategory.Combat, GLFW.GLFW_KEY_UNKNOWN, false, true);
+        super("回溯", ModuleCategory.Combat, GLFW.GLFW_KEY_UNKNOWN, false, true);
     }
 
     public boolean isBacktracking() {

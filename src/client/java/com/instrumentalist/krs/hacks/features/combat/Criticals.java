@@ -18,16 +18,16 @@ import org.lwjgl.glfw.GLFW;
 
 public class Criticals extends Module {
     @Setting
-    private final ListValue mode = new ListValue("Mode", new String[]{"Packet", "Less Packet"}, "Packet");
+    private final ListValue mode = new ListValue("模式", new String[]{"Packet", "Less Packet"}, "Packet");
 
     @Setting
-    private final BooleanValue cooldownCheck = new BooleanValue("Cooldown Check", false);
+    private final BooleanValue cooldownCheck = new BooleanValue("冷却检查", false);
 
     private final double[] packetValues = new double[]{0.0625D, 0.0D, 0.05D, 0.0D};
     private final double[] lessPacketValues = new double[]{0.0625D, 0.0D};
 
     public Criticals() {
-        super("Criticals", ModuleCategory.Combat, GLFW.GLFW_KEY_UNKNOWN, false, true);
+        super("暴击", ModuleCategory.Combat, GLFW.GLFW_KEY_UNKNOWN, false, true);
     }
 
     @Override

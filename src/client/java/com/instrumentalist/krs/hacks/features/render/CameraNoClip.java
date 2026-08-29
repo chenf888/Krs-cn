@@ -8,10 +8,10 @@ import org.lwjgl.glfw.GLFW;
 public class CameraNoClip extends Module {
 
     @Setting
-    public static final FloatValue distance = new FloatValue("Distance", 0f, -4f, 100f);
+    public static final FloatValue distance = new FloatValue("距离", 0f, -4f, 100f);
 
     public CameraNoClip() {
-        super("Camera No Clip", ModuleCategory.Render, GLFW.GLFW_KEY_UNKNOWN, false, false);
+        super("相机穿墙", ModuleCategory.Render, GLFW.GLFW_KEY_UNKNOWN, false, false);
     }
 
     @Override

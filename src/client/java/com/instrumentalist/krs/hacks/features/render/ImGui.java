@@ -10,7 +10,7 @@ import org.lwjgl.glfw.GLFW;
 public class ImGui extends Module {
 
     public ImGui() {
-        super("Im Gui", ModuleCategory.Render, GLFW.GLFW_KEY_UNKNOWN, true, false);
+        super("ImGui界面", ModuleCategory.Render, GLFW.GLFW_KEY_UNKNOWN, true, false);
     }
 
     public static int getOpenGuiKey() {
@@ -19,8 +19,7 @@ public class ImGui extends Module {
     }
 
     @Setting
-    public static final ListValue theme = new ListValue(
-            "Theme",
+    public static final ListValue theme = new ListValue("主题",
             new String[]{"Light", "Classic", "Dark"},
             "Classic"
     );

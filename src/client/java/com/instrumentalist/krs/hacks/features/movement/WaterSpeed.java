@@ -11,19 +11,19 @@ import org.lwjgl.glfw.GLFW;
 
 public class WaterSpeed extends Module {
     @Setting
-    private final ListValue mode = new ListValue("Mode", new String[]{"Scale", "Strafe", "Boost"}, "Scale");
+    private final ListValue mode = new ListValue("模式", new String[]{"Scale", "Strafe", "Boost"}, "Scale");
 
     @Setting
-    private final FloatValue multiplier = new FloatValue("Multiplier", 1.2f, 1.0f, 3.0f);
+    private final FloatValue multiplier = new FloatValue("倍率", 1.2f, 1.0f, 3.0f);
 
     @Setting
-    private final FloatValue maxSpeed = new FloatValue("Max Speed", 0.5f, 0.1f, 2.0f);
+    private final FloatValue maxSpeed = new FloatValue("最大速度", 0.5f, 0.1f, 2.0f);
 
     @Setting
-    private final BooleanValue lava = new BooleanValue("Lava", false);
+    private final BooleanValue lava = new BooleanValue("岩浆", false);
 
     public WaterSpeed() {
-        super("Water Speed", ModuleCategory.Movement, GLFW.GLFW_KEY_UNKNOWN, false, true);
+        super("水中加速", ModuleCategory.Movement, GLFW.GLFW_KEY_UNKNOWN, false, true);
     }
 
     @Override

@@ -10,20 +10,20 @@ import org.lwjgl.glfw.GLFW;
 public class Reach extends Module {
 
     public Reach() {
-        super("Reach", ModuleCategory.Combat, GLFW.GLFW_KEY_UNKNOWN, false, true);
+        super("攻击距离", ModuleCategory.Combat, GLFW.GLFW_KEY_UNKNOWN, false, true);
     }
 
     @Setting
-    private static final BooleanValue block = new BooleanValue("Block", true);
+    private static final BooleanValue block = new BooleanValue("方块", true);
 
     @Setting
-    private static final FloatValue blockReach = new FloatValue("Block Reach", 6f, 0.1f, 6f, block::get);
+    private static final FloatValue blockReach = new FloatValue("方块攻击距离", 6f, 0.1f, 6f, block::get);
 
     @Setting
-    private static final BooleanValue entity = new BooleanValue("Entity", true);
+    private static final BooleanValue entity = new BooleanValue("实体", true);
 
     @Setting
-    private static final FloatValue entityReach = new FloatValue("Entity Reach", 6f, 0.1f, 6f, entity::get);
+    private static final FloatValue entityReach = new FloatValue("实体攻击距离", 6f, 0.1f, 6f, entity::get);
 
     public static double hookBlockReach(double original) {
         if (ModuleManager.getModuleState(Reach.class) && block.get())

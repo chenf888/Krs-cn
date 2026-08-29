@@ -20,7 +20,7 @@ public class Sex extends Module {
     @Override
     public void onEnable() {
         if (Client.loaded) {
-            ChatUtil.printChat("Do not use this module");
+            ChatUtil.printChat("不要使用此模块");
             this.toggle();
         }
     }

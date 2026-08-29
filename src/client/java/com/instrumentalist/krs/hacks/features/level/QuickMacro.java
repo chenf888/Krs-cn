@@ -12,14 +12,14 @@ import org.lwjgl.glfw.GLFW;
 public class QuickMacro extends Module {
 
     public QuickMacro() {
-        super("Quick Macro", ModuleCategory.Level, GLFW.GLFW_KEY_UNKNOWN, false, true);
+        super("快捷宏", ModuleCategory.Level, GLFW.GLFW_KEY_UNKNOWN, false, true);
     }
 
     @Setting
-    private final KeyBindValue macroKey = new KeyBindValue("Macro Key", GLFW.GLFW_KEY_X);
+    private final KeyBindValue macroKey = new KeyBindValue("宏按键", GLFW.GLFW_KEY_X);
 
     @Setting
-    private final TextValue messageOrCommand = new TextValue("Message / Command", "");
+    private final TextValue messageOrCommand = new TextValue("消息 / 命令", "");
 
     @Override
     public void onDisable() {

@@ -8,13 +8,13 @@ import org.lwjgl.glfw.GLFW;
 public class TrueSight extends Module {
 
     @Setting
-    public static final BooleanValue entities = new BooleanValue("Entities", false);
+    public static final BooleanValue entities = new BooleanValue("实体", false);
 
     @Setting
-    public static final BooleanValue barriers = new BooleanValue("Barriers", true);
+    public static final BooleanValue barriers = new BooleanValue("屏障", true);
 
     public TrueSight() {
-        super("True Sight", ModuleCategory.Render, GLFW.GLFW_KEY_UNKNOWN, false, true);
+        super("真实视野", ModuleCategory.Render, GLFW.GLFW_KEY_UNKNOWN, false, true);
     }
 
     @Override

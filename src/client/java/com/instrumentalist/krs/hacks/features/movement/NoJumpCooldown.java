@@ -10,7 +10,7 @@ import org.lwjgl.glfw.GLFW;
 public class NoJumpCooldown extends Module {
 
     public NoJumpCooldown() {
-        super("No Jump Cooldown", ModuleCategory.Movement, GLFW.GLFW_KEY_UNKNOWN, false, true);
+        super("无跳跃冷却", ModuleCategory.Movement, GLFW.GLFW_KEY_UNKNOWN, false, true);
     }
 
     @Override

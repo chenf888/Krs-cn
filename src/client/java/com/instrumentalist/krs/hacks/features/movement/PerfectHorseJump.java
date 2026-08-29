@@ -8,7 +8,7 @@ import org.lwjgl.glfw.GLFW;
 public class PerfectHorseJump extends Module {
 
     public PerfectHorseJump() {
-        super("Perfect Horse Jump", ModuleCategory.Movement, GLFW.GLFW_KEY_UNKNOWN, false, true);
+        super("完美马跳", ModuleCategory.Movement, GLFW.GLFW_KEY_UNKNOWN, false, true);
     }
 
     public static float modifiedHorseJump(float original) {

@@ -24,10 +24,10 @@ import net.minecraft.world.item.Items;
 public class MurdererDetector extends Module {
 
     @Setting
-    private static final BooleanValue chatAbuse = new BooleanValue("Chat Abuse", false);
+    private static final BooleanValue chatAbuse = new BooleanValue("聊天滥用", false);
 
     public MurdererDetector() {
-        super("Murderer Detector", ModuleCategory.Player, GLFW.GLFW_KEY_UNKNOWN, false, true);
+        super("凶手检测", ModuleCategory.Player, GLFW.GLFW_KEY_UNKNOWN, false, true);
     }
 
     public static ArrayList<Player> murderers = new ArrayList<>();
@@ -78,8 +78,8 @@ public class MurdererDetector extends Module {
                 if (chatAbuse.get() && !mc.player.getName().getString().equalsIgnoreCase(playerName)) {
                     mc.player.connection.sendChat(playerName + " is a murderer!!!!!!!!");
                 }
-                Client.notificationManager.addNotification("Murderer detected!", "Murderer " + playerName + " was detected!");
-                ChatUtil.printChat("Murderer " + playerName + " was detected!");
+                Client.notificationManager.addNotification("检测到凶手!", "Murderer " + playerName + " was detected!");
+                ChatUtil.printChat("检测到凶手 " + playerName + "!");
             }
         }
     }

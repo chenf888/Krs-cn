@@ -8,19 +8,19 @@ import org.lwjgl.glfw.GLFW;
 public class AntiBlind extends Module {
 
     @Setting
-    public static final BooleanValue fire = new BooleanValue("Fire", true);
+    public static final BooleanValue fire = new BooleanValue("火焰", true);
 
     @Setting
-    public static final BooleanValue pumpkin = new BooleanValue("Pumpkin", true);
+    public static final BooleanValue pumpkin = new BooleanValue("南瓜", true);
 
     @Setting
-    public static final BooleanValue camera = new BooleanValue("Camera", true);
+    public static final BooleanValue camera = new BooleanValue("相机", true);
 
     @Setting
-    public static final BooleanValue effects = new BooleanValue("Effects", true);
+    public static final BooleanValue effects = new BooleanValue("效果", true);
 
     public AntiBlind() {
-        super("Anti Blind", ModuleCategory.Render, GLFW.GLFW_KEY_UNKNOWN, false, false);
+        super("防失明", ModuleCategory.Render, GLFW.GLFW_KEY_UNKNOWN, false, false);
     }
 
     @Override

@@ -24,20 +24,20 @@ import org.lwjgl.glfw.GLFW;
 public class EntityFly extends Module {
 
     public EntityFly() {
-        super("Entity Fly", ModuleCategory.Movement, GLFW.GLFW_KEY_UNKNOWN, false, true);
+        super("实体飞行", ModuleCategory.Movement, GLFW.GLFW_KEY_UNKNOWN, false, true);
     }
 
     @Setting
-    private static final BooleanValue stopBoatPaddles = new BooleanValue("Stop Boat Paddles", true);
+    private static final BooleanValue stopBoatPaddles = new BooleanValue("停止划船", true);
 
     @Setting
-    private static final BooleanValue twoBjpBoost = new BooleanValue("2b2tJP Boost", false);
+    private static final BooleanValue twoBjpBoost = new BooleanValue("2b2tJP加速", false);
 
     @Setting
-    private static final FloatValue hSpeed = new FloatValue("Horizontal Speed", 2f, 0.1f, 4f, () -> !twoBjpBoost.get());
+    private static final FloatValue hSpeed = new FloatValue("水平速度", 2f, 0.1f, 4f, () -> !twoBjpBoost.get());
 
     @Setting
-    private static final FloatValue vSpeed = new FloatValue("Vertical Speed", 1.2f, 0.1f, 4f, () -> !twoBjpBoost.get());
+    private static final FloatValue vSpeed = new FloatValue("垂直速度", 1.2f, 0.1f, 4f, () -> !twoBjpBoost.get());
 
     public static boolean hookUpdatePaddles(AbstractBoat boatEntity, boolean original) {
         if (shouldIgnoreBoatSteering(boatEntity) && stopBoatPaddles.get())
@@ -64,7 +64,7 @@ public class EntityFly extends Module {
 
     @Override
     public String description() {
-        return "Dismount with left alt";
+        return "按左 Alt 下马";
     }
 
     @Override
@@ -75,7 +75,7 @@ public class EntityFly extends Module {
         if (player.isPassenger() && InputConstants.isKeyDown(mc.getWindow(), GLFW.GLFW_KEY_LEFT_ALT)) {
             player.stopRiding();
             PacketUtil.sendPacket(new ServerboundPlayerInputPacket(new Input(false, false, false, false, false, true, false)));
-            Client.notificationManager.addNotification("Success", "Dismounted");
+            Client.notificationManager.addNotification("成功", "已下马");
             return;
         }
 

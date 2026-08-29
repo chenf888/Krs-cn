@@ -28,25 +28,25 @@ import java.util.ArrayList;
 public class Nuker extends Module {
 
     @Setting
-    private static final ListValue mode = new ListValue("Mode", new String[]{"Normal", "Floor"}, "Normal");
+    private static final ListValue mode = new ListValue("模式", new String[]{"Normal", "Floor"}, "Normal");
 
     @Setting
-    private static final ListValue clickMode = new ListValue("Click Mode", new String[]{"Break", "Place"}, "Break");
+    private static final ListValue clickMode = new ListValue("点击模式", new String[]{"Break", "Place"}, "Break");
 
     @Setting
-    private static final IntValue range = new IntValue("Range", 4, 2, 6, "m");
+    private static final IntValue range = new IntValue("范围", 4, 2, 6, "m");
 
     @Setting
-    private static final BooleanValue singleBlock = new BooleanValue("Single Block", false);
+    private static final BooleanValue singleBlock = new BooleanValue("单方块", false);
 
     @Setting
-    private static final BooleanValue rotations = new BooleanValue("Rotations", true, singleBlock::get);
+    private static final BooleanValue rotations = new BooleanValue("旋转", true, singleBlock::get);
 
     @Setting
-    private static final IntValue nukeSpeed = new IntValue("Nuke Speed", 10, 1, 10, () -> !singleBlock.get());
+    private static final IntValue nukeSpeed = new IntValue("挖掘速度", 10, 1, 10, () -> !singleBlock.get());
 
     @Setting
-    private static final BooleanValue noteBlockOnly = new BooleanValue("Note Block Only", false);
+    private static final BooleanValue noteBlockOnly = new BooleanValue("仅音符方块", false);
 
     private static boolean wasBreaking = false;
 
@@ -58,7 +58,7 @@ public class Nuker extends Module {
     private int originalSlot = -1;
 
     public Nuker() {
-        super("Nuker", ModuleCategory.Level, GLFW.GLFW_KEY_UNKNOWN, false, true);
+        super("核弹挖掘", ModuleCategory.Level, GLFW.GLFW_KEY_UNKNOWN, false, true);
     }
 
     @Override

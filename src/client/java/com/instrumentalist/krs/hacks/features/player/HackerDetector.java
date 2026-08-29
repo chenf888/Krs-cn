@@ -42,7 +42,7 @@ public class HackerDetector extends Module {
     }
 
     public HackerDetector() {
-        super("Hacker Detector", ModuleCategory.Player, GLFW.GLFW_KEY_UNKNOWN, false, true);
+        super("外挂检测", ModuleCategory.Player, GLFW.GLFW_KEY_UNKNOWN, false, true);
     }
 
     private void reset() {
@@ -102,7 +102,7 @@ public class HackerDetector extends Module {
                 double maxSpeed = isOnGround ? baseSpeed : baseSpeed * 1.5;
 
                 if (distanceXZSqr > maxSpeed * maxSpeed && (currentTime - state.lastAlertTime) >= 5000) {
-                    Client.notificationManager.addNotification("Hacker Detected", player.getName().getString() + " is using speed hack!");
+                    Client.notificationManager.addNotification("检测到外挂", player.getName().getString() + " is using speed hack!");
                     state.lastAlertTime = currentTime;
                 }
 
@@ -123,7 +123,7 @@ public class HackerDetector extends Module {
                     flyingDuration += deltaTime;
 
                     if (flyingDuration > 2000 && (currentTime - state.lastAlertTime) >= 3000) {
-                        Client.notificationManager.addNotification("Hacker Detected", player.getName().getString() + " is using fly hack!");
+                        Client.notificationManager.addNotification("检测到外挂", player.getName().getString() + " is using fly hack!");
                         state.lastAlertTime = currentTime;
                         flyingDuration = 0;
                     }

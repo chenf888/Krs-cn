@@ -17,14 +17,14 @@ import org.lwjgl.glfw.GLFW;
 public class FastBow extends Module {
 
     public FastBow() {
-        super("Fast Bow", ModuleCategory.Combat, GLFW.GLFW_KEY_UNKNOWN, false, true);
+        super("快速拉弓", ModuleCategory.Combat, GLFW.GLFW_KEY_UNKNOWN, false, true);
     }
 
     @Setting
-    private final IntValue packets = new IntValue("Packets", 20, 1, 20, "x");
+    private final IntValue packets = new IntValue("数据包", 20, 1, 20, "x");
 
     @Setting
-    private final IntValue chargeTicks = new IntValue("Charge Ticks", 1, 1, 20, "ticks");
+    private final IntValue chargeTicks = new IntValue("蓄力刻", 1, 1, 20, "ticks");
 
     @Override
     public void onDisable() {

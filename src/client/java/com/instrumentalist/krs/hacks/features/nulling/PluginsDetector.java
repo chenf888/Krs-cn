@@ -24,7 +24,7 @@ import net.minecraft.network.protocol.game.ServerboundCommandSuggestionPacket;
 public class PluginsDetector extends Module {
 
     public PluginsDetector() {
-        super("Plugins Detector", null, GLFW.GLFW_KEY_UNKNOWN, false, false);
+        super("插件检测", null, GLFW.GLFW_KEY_UNKNOWN, false, false);
     }
 
     private final TickTimer timer = new TickTimer();
@@ -227,7 +227,7 @@ public class PluginsDetector extends Module {
     public static void detectPlugins(boolean printChat) {
         if (plugins == null || plugins.length == 0) {
             if (printChat) {
-                ChatUtil.printChat("Failed!");
+                ChatUtil.printChat("失败!");
                 ModuleRenderable.addCommandLog("Failed!");
             }
             return;

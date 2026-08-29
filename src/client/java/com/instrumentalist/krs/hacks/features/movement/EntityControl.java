@@ -14,7 +14,7 @@ import org.lwjgl.glfw.GLFW;
 public class EntityControl extends Module {
 
     public EntityControl() {
-        super("Entity Control", ModuleCategory.Movement, GLFW.GLFW_KEY_UNKNOWN, false, true);
+        super("实体控制", ModuleCategory.Movement, GLFW.GLFW_KEY_UNKNOWN, false, true);
     }
 
     public static LivingEntity hookControllingPassenger(LivingEntity original, Entity entity) {

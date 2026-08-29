@@ -12,7 +12,7 @@ import org.lwjgl.glfw.GLFW;
 public class AntiLevitation extends Module {
 
     public AntiLevitation() {
-        super("Anti Levitation", ModuleCategory.Movement, GLFW.GLFW_KEY_UNKNOWN, false, true);
+        super("抗漂浮", ModuleCategory.Movement, GLFW.GLFW_KEY_UNKNOWN, false, true);
     }
 
     @Override

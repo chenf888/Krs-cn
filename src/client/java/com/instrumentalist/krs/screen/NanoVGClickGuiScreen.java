@@ -161,7 +161,7 @@ public class NanoVGClickGuiScreen extends Screen {
     }
 
     public NanoVGClickGuiScreen(Screen returnScreen) {
-        super(Component.literal("NanoVG Click GUI"));
+        super(Component.literal("Krs 点击界面"));
         this.returnScreen = returnScreen instanceof NanoVGClickGuiScreen ? null : returnScreen;
         detachedClosingScreen = null;
         restoreUiState();
@@ -986,7 +986,7 @@ public class NanoVGClickGuiScreen extends Screen {
                     true
             );
             NVGFonts.INTER.drawText(
-                    module.moduleCategory.name(),
+                    module.moduleCategory.displayName(),
                     settingsPanelRect.x + 33f,
                     settingsPanelRect.y + 25f,
                     9f,
@@ -1106,7 +1106,7 @@ public class NanoVGClickGuiScreen extends Screen {
 
     private void renderHeader(NVGU vg, float x, float y, float width) {
         NVGFonts.ICON.drawText(MaterialIcon.MENU, x + 14f, y + 12f, 14f, new Color(0, 255, 255), Alignment.LEFT_TOP, true);
-        NVGFonts.INTER_MEDIUM.drawText(configView ? "Configs" : "Modules", x + 34f, y + 12f, 15f, alpha(255, 255, 255, 235), Alignment.LEFT_TOP, true);
+        NVGFonts.INTER_MEDIUM.drawText(configView ? "配置" : "模块", x + 34f, y + 12f, 15f, alpha(255, 255, 255, 235), Alignment.LEFT_TOP, true);
 
         closeRect = new Rect(x + width - 30f, y + 11f, 18f, 18f);
         searchRect = new Rect(x + width - 242f, y + 10f, 196f, 20f);
@@ -1127,7 +1127,7 @@ public class NanoVGClickGuiScreen extends Screen {
         vg.roundedRectangleBorder(rect.x, rect.y, rect.width, rect.height, 5f, 1f, focused ? alpha(0, 255, 255, 96) : alpha(255, 255, 255, 30), Border.INSIDE);
         NVGFonts.ICON.drawText(MaterialIcon.SEARCH, rect.x + 7f, rect.y + 5f, 12f, focused ? new Color(0, 255, 255) : alpha(176, 186, 196, 220), Alignment.LEFT_TOP, false);
 
-        String text = inputText(searchQuery, focused, "Search");
+        String text = inputText(searchQuery, focused, "搜索");
         Color color = searchQuery.isBlank() && !focused ? alpha(120, 130, 140, 205) : alpha(255, 255, 255, 235);
         float textReserve = searchQuery.isBlank() ? 33f : 51f;
         String visibleText = fitText(text, NVGFonts.INTER, 11f, rect.width - textReserve);
@@ -1153,11 +1153,11 @@ public class NanoVGClickGuiScreen extends Screen {
         String hint = interactionHint();
         String countLabel;
         if (!searchQuery.isBlank())
-            countLabel = visibleCount + (visibleCount == 1 ? " result" : " results");
+            countLabel = visibleCount + " 条结果";
         else if (configView)
-            countLabel = visibleCount + (visibleCount == 1 ? " config" : " configs");
+            countLabel = visibleCount + " 个配置";
         else
-            countLabel = visibleCount + (visibleCount == 1 ? " module" : " modules");
+            countLabel = visibleCount + " 个模块";
         float countWidth = NVGFonts.INTER.getWidth(countLabel, 10f);
         NVGFonts.INTER.drawText(
                 fitText(hint, NVGFonts.INTER, 10f, Math.max(40f, width - countWidth - 18f)),
@@ -1175,23 +1175,23 @@ public class NanoVGClickGuiScreen extends Screen {
 
     private String interactionHint() {
         if (bindingModule != null || bindingValue != null)
-            return "Press a key  •  Del to unbind  •  Esc cancel";
+            return "按下按键  •  Del 取消绑定  •  Esc 取消";
         if (textFocus == TextFocus.CONFIG_NAME)
-            return "Enter to create  •  Ctrl+A select all  •  Ctrl+V paste";
+            return "回车创建  •  Ctrl+A 全选  •  Ctrl+V 粘贴";
         if (textFocus == TextFocus.SEARCH)
-            return "Type to filter  •  Ctrl+A select all  •  Ctrl+V paste  •  Esc clear";
+            return "输入过滤  •  Ctrl+A 全选  •  Ctrl+V 粘贴  •  Esc 清除";
         if (textFocus == TextFocus.NUMBER)
-            return "Type a number  •  Ctrl+A select all  •  Enter confirm  •  Esc cancel";
+            return "输入数字  •  Ctrl+A 全选  •  Enter 确认  •  Esc 取消";
         if (textFocus == TextFocus.SETTING)
-            return "Type to edit  •  Ctrl+A select all  •  Ctrl+V paste";
+            return "输入编辑  •  Ctrl+A 全选  •  Ctrl+V 粘贴";
         if (openedListValue != null)
-            return "Click an option";
+            return "点击选择选项";
         if (hoveredModule != null) {
             String note = moduleNote(hoveredModule);
             if (!note.isEmpty())
                 return note;
         }
-        return "Left toggle  •  Right settings  •  Ctrl+F search";
+        return "左键开关  • 右键设置  •  Ctrl+F 搜索";
     }
 
     private void renderTabs(NVGU vg, float x, float y, float width) {
@@ -1219,7 +1219,7 @@ public class NanoVGClickGuiScreen extends Screen {
                     : mix(alpha(176, 186, 196, 220), alpha(230, 235, 240, 235), hoverProgress);
             Color textColor = mix(alpha(255, 255, 255, 202), alpha(255, 255, 255, 235), selected ? 1f : hoverProgress);
             NVGFonts.ICON.drawText(categoryIcon(category), rect.x + 8f, rect.y + 4f, 12f, iconColor, Alignment.LEFT_TOP, false);
-            NVGFonts.INTER.drawText(fitText(category.name(), NVGFonts.INTER, 11f, rect.width - 28f), rect.x + 24f, rect.y + 5f, 11f, textColor, Alignment.LEFT_TOP, false);
+            NVGFonts.INTER.drawText(fitText(category.displayName(), NVGFonts.INTER, 11f, rect.width - 28f), rect.x + 24f, rect.y + 5f, 11f, textColor, Alignment.LEFT_TOP, false);
         }
 
         Rect configRect = new Rect(x, y + 5f + categories.length * (tabHeight + gap), width, tabHeight);
@@ -1237,7 +1237,7 @@ public class NanoVGClickGuiScreen extends Screen {
                 ? new Color(0, 255, 255)
                 : mix(alpha(176, 186, 196, 220), alpha(230, 235, 240, 235), hoverProgress);
         NVGFonts.ICON.drawText(MaterialIcon.FILE_OPEN, configRect.x + 8f, configRect.y + 4f, 12f, configIconColor, Alignment.LEFT_TOP, false);
-        NVGFonts.INTER.drawText(fitText("Configs", NVGFonts.INTER, 11f, configRect.width - 28f), configRect.x + 24f, configRect.y + 5f, 11f, mix(alpha(255, 255, 255, 202), alpha(255, 255, 255, 235), configView ? 1f : hoverProgress), Alignment.LEFT_TOP, false);
+        NVGFonts.INTER.drawText(fitText("配置", NVGFonts.INTER, 11f, configRect.width - 28f), configRect.x + 24f, configRect.y + 5f, 11f, mix(alpha(255, 255, 255, 202), alpha(255, 255, 255, 235), configView ? 1f : hoverProgress), Alignment.LEFT_TOP, false);
     }
 
     private int renderModuleList(NVGU vg, float x, float y, float width, float height) {
@@ -1260,8 +1260,8 @@ public class NanoVGClickGuiScreen extends Screen {
                         vg,
                         listViewport,
                         searchQuery.isBlank() ? MaterialIcon.INFO : MaterialIcon.SEARCH,
-                        searchQuery.isBlank() ? "No modules in this category" : "No matching modules",
-                        searchQuery.isBlank() ? "Choose another category." : "Try another keyword or clear the search."
+                        searchQuery.isBlank() ? "该分类下没有模块" : "没有匹配的模块",
+                        searchQuery.isBlank() ? "换个分类试试。" : "换个关键词或清除搜索。"
                 );
                 return;
             }
@@ -1310,8 +1310,8 @@ public class NanoVGClickGuiScreen extends Screen {
                         vg,
                         listViewport,
                         searchQuery.isBlank() ? MaterialIcon.INFO : MaterialIcon.SEARCH,
-                        searchQuery.isBlank() ? "No " + selectedConfigTab.emptyName + " configs" : "No matching configs",
-                        searchQuery.isBlank() ? "Create one above or choose another tab." : "Try another keyword or clear the search."
+                        searchQuery.isBlank() ? "没有" + selectedConfigTab.emptyName + "配置" : "没有匹配的配置",
+                        searchQuery.isBlank() ? "在上方创建一个或切换标签页。" : "换个关键词或清除搜索。"
                 );
                 return;
             }
@@ -1394,7 +1394,7 @@ public class NanoVGClickGuiScreen extends Screen {
         vg.roundedRectangle(input.x, input.y, input.width, input.height, 5f, alpha(255, 255, 255, active ? 29 : inputHovered ? 22 : 16));
         vg.roundedRectangleBorder(input.x, input.y, input.width, input.height, 5f, 1f, active ? alpha(0, 255, 255, 90) : alpha(255, 255, 255, 28), Border.INSIDE);
 
-        String placeholder = selectedConfigTab == ConfigTab.MODULE ? "New module config" : "New bind config";
+        String placeholder = selectedConfigTab == ConfigTab.MODULE ? "新模块配置" : "新按键配置";
         String text = inputText(newConfigName, active, placeholder);
         String visibleText = fitText(text, NVGFonts.INTER, 11f, input.width - 32f);
         renderSelectionHighlight(vg, active, visibleText, NVGFonts.INTER, 11f, input.x + 26f, input.y + 6f, input.width - 32f);
@@ -1406,7 +1406,7 @@ public class NanoVGClickGuiScreen extends Screen {
         float progress = animate("config-create", canCreate && hovered, 0.18f);
         vg.roundedRectangle(button.x, button.y, button.width, button.height, 5f, canCreate ? alpha(0, 255, 255, (int) (35 + 22 * progress)) : alpha(255, 255, 255, 14));
         vg.roundedRectangleBorder(button.x, button.y, button.width, button.height, 5f, 1f, canCreate ? alpha(0, 255, 255, 88) : alpha(255, 255, 255, 24), Border.INSIDE);
-        NVGFonts.INTER_MEDIUM.drawText("Create", button.centerX(), button.y + 6f, 11f, canCreate ? alpha(255, 255, 255, 235) : alpha(120, 130, 140, 205), Alignment.CENTER_TOP, false);
+        NVGFonts.INTER_MEDIUM.drawText("创建", button.centerX(), button.y + 6f, 11f, canCreate ? alpha(255, 255, 255, 235) : alpha(120, 130, 140, 205), Alignment.CENTER_TOP, false);
     }
 
     private void renderConfigRow(NVGU vg, ConfigEntry config, int index, int visibleCount, float x, float y, float width) {
@@ -1448,7 +1448,7 @@ public class NanoVGClickGuiScreen extends Screen {
             Rect current = new Rect(row.x + row.width - (showDelete ? 101f : 74f), row.y + 6f, 62f, 17f);
             vg.roundedRectangle(current.x, current.y, current.width, current.height, 8f, alpha(0, 255, 255, (int) (28 * currentProgress)));
             vg.roundedRectangleBorder(current.x, current.y, current.width, current.height, 8f, 1f, alpha(0, 255, 255, (int) (74 * currentProgress)), Border.INSIDE);
-            NVGFonts.INTER.drawText("Current", current.centerX(), current.y + 4f, 9f, alpha(0, 255, 255, (int) (255 * currentProgress)), Alignment.CENTER_TOP, false);
+            NVGFonts.INTER.drawText("当前", current.centerX(), current.y + 4f, 9f, alpha(0, 255, 255, (int) (255 * currentProgress)), Alignment.CENTER_TOP, false);
         }
 
         if (delete != null) {
@@ -1547,7 +1547,7 @@ public class NanoVGClickGuiScreen extends Screen {
         List<SettingValue<?>> settings = collectSettings(module);
 
         if (!hasRenderableSettings(module)) {
-            NVGFonts.INTER.drawText("No settings", x + 10f, rowY + 7f, 11f, alpha(120, 130, 140, 205), Alignment.LEFT_TOP, false);
+            NVGFonts.INTER.drawText("无设置", x + 10f, rowY + 7f, 11f, alpha(120, 130, 140, 205), Alignment.LEFT_TOP, false);
             return;
         }
 
@@ -1569,14 +1569,14 @@ public class NanoVGClickGuiScreen extends Screen {
     private float renderBaseSettingRows(NVGU vg, Module module, float x, float y, float width) {
         Rect array = new Rect(x, y, width, 27f);
         addControl(ControlType.SHOW_ON_ARRAY, array, module, null, 0);
-        renderSettingRow(vg, array, "Show on array", null);
+        renderSettingRow(vg, array, "在模块列表显示", null);
         drawSwitch(vg, array.x + array.width - 40f, array.y + 6f, 31f, 15f, animateIdentity(switchAnimations, switchAnimationFrames, module, module.showOnArray, 0.12f));
 
         float rowY = renderModuleNote(vg, module, x, y + 34f, width);
 
         Rect key = new Rect(x, rowY, width, 27f);
         addControl(ControlType.MODULE_KEY, key, module, null, 0);
-        renderSettingRow(vg, key, "Keybind", bindingModule == module ? "Press key..." : keyName(module.key));
+        renderSettingRow(vg, key, "按键", bindingModule == module ? "按下按键..." : keyName(module.key));
         NVGFonts.ICON.drawText(MaterialIcon.KEY, key.x + key.width - 9f, key.y + 6f, 12f, bindingModule == module ? new Color(0, 255, 255) : alpha(176, 186, 196, 220), Alignment.RIGHT_TOP, false);
 
         return rowY + 34f;
@@ -1592,7 +1592,7 @@ public class NanoVGClickGuiScreen extends Screen {
         vg.roundedRectangle(row.x, row.y + 1f, row.width, row.height - 2f, 4f, hovered ? alpha(255, 205, 92, 34) : alpha(255, 205, 92, 20));
         vg.roundedRectangleBorder(row.x, row.y + 1f, row.width, row.height - 2f, 4f, 1f, alpha(255, 205, 92, hovered ? 70 : 46), Border.INSIDE);
         NVGFonts.ICON.drawText(MaterialIcon.INFO, row.x + 8f, row.y + 5f, 12f, alpha(255, 205, 92, 235), Alignment.LEFT_TOP, false);
-        NVGFonts.INTER_MEDIUM.drawText("Note", row.x + 25f, row.y + 7f, 10f, alpha(255, 205, 92, 235), Alignment.LEFT_TOP, false);
+        NVGFonts.INTER_MEDIUM.drawText("备注", row.x + 25f, row.y + 7f, 10f, alpha(255, 205, 92, 235), Alignment.LEFT_TOP, false);
         NVGFonts.INTER.drawText(fitText(note, NVGFonts.INTER, 10f, row.width - 74f), row.x + 66f, row.y + 7f, 10f, alpha(255, 230, 170, 230), Alignment.LEFT_TOP, false);
         return y + 34f;
     }
@@ -1612,7 +1612,7 @@ public class NanoVGClickGuiScreen extends Screen {
             case ColorValue value -> renderColorSetting(vg, row, value);
             case TextValue value -> renderTextSetting(vg, row, module, value);
             case KeyBindValue value -> renderKeyBindSetting(vg, row, value);
-            default -> renderSettingRow(vg, row, setting.name, "Unsupported");
+            default -> renderSettingRow(vg, row, setting.name, "不支持");
         }
 
         return 34f + listDropdownHeight(module, setting);
@@ -1780,7 +1780,7 @@ public class NanoVGClickGuiScreen extends Screen {
 
     private void renderKeyBindSetting(NVGU vg, Rect row, KeyBindValue value) {
         boolean active = bindingValue == value;
-        renderSettingRow(vg, row, value.name, active ? "Press key..." : keyName(value.get()));
+        renderSettingRow(vg, row, value.name, active ? "按下按键..." : keyName(value.get()));
         addControl(ControlType.KEY_VALUE, row, value, null, 0);
         NVGFonts.ICON.drawText(MaterialIcon.KEY, row.x + row.width - 9f, row.y + 6f, 12f, active ? new Color(0, 255, 255) : alpha(176, 186, 196, 220), Alignment.RIGHT_TOP, false);
     }
@@ -2076,7 +2076,7 @@ public class NanoVGClickGuiScreen extends Screen {
             boolean matches = query.isBlank()
                     ? module.moduleCategory == selectedCategory
                     : normalize(module.moduleName).contains(query)
-                    || normalize(module.moduleCategory.name()).contains(query)
+                    || normalize(module.moduleCategory.displayName()).contains(query)
                     || (module.tag() != null && normalize(module.tag()).contains(query))
                     || (module.description() != null && normalize(module.description()).contains(query));
 
@@ -2914,34 +2914,34 @@ public class NanoVGClickGuiScreen extends Screen {
 
     private static String keyName(int key) {
         if (key == GLFW.GLFW_KEY_UNKNOWN)
-            return "NONE";
+            return "无";
 
         String name = GLFW.glfwGetKeyName(key, GLFW.glfwGetKeyScancode(key));
         if (name != null)
             return name.toUpperCase(Locale.ROOT);
 
         return switch (key) {
-            case GLFW.GLFW_KEY_SPACE -> "SPACE";
-            case GLFW.GLFW_KEY_ESCAPE -> "ESCAPE";
-            case GLFW.GLFW_KEY_ENTER -> "ENTER";
-            case GLFW.GLFW_KEY_TAB -> "TAB";
-            case GLFW.GLFW_KEY_BACKSPACE -> "BACKSPACE";
-            case GLFW.GLFW_KEY_INSERT -> "INSERT";
-            case GLFW.GLFW_KEY_DELETE -> "DELETE";
-            case GLFW.GLFW_KEY_RIGHT -> "RIGHT";
-            case GLFW.GLFW_KEY_LEFT -> "LEFT";
-            case GLFW.GLFW_KEY_DOWN -> "DOWN";
-            case GLFW.GLFW_KEY_UP -> "UP";
-            case GLFW.GLFW_KEY_PAGE_UP -> "PAGE UP";
-            case GLFW.GLFW_KEY_PAGE_DOWN -> "PAGE DOWN";
-            case GLFW.GLFW_KEY_HOME -> "HOME";
-            case GLFW.GLFW_KEY_END -> "END";
-            case GLFW.GLFW_KEY_LEFT_SHIFT -> "LEFT SHIFT";
-            case GLFW.GLFW_KEY_LEFT_CONTROL -> "LEFT CTRL";
-            case GLFW.GLFW_KEY_LEFT_ALT -> "LEFT ALT";
-            case GLFW.GLFW_KEY_RIGHT_SHIFT -> "RIGHT SHIFT";
-            case GLFW.GLFW_KEY_RIGHT_CONTROL -> "RIGHT CTRL";
-            case GLFW.GLFW_KEY_RIGHT_ALT -> "RIGHT ALT";
+            case GLFW.GLFW_KEY_SPACE -> "空格";
+            case GLFW.GLFW_KEY_ESCAPE -> "Esc";
+            case GLFW.GLFW_KEY_ENTER -> "回车";
+            case GLFW.GLFW_KEY_TAB -> "Tab";
+            case GLFW.GLFW_KEY_BACKSPACE -> "退格";
+            case GLFW.GLFW_KEY_INSERT -> "插入";
+            case GLFW.GLFW_KEY_DELETE -> "删除";
+            case GLFW.GLFW_KEY_RIGHT -> "右方向键";
+            case GLFW.GLFW_KEY_LEFT -> "左方向键";
+            case GLFW.GLFW_KEY_DOWN -> "下方向键";
+            case GLFW.GLFW_KEY_UP -> "上方向键";
+            case GLFW.GLFW_KEY_PAGE_UP -> "上翻页";
+            case GLFW.GLFW_KEY_PAGE_DOWN -> "下翻页";
+            case GLFW.GLFW_KEY_HOME -> "Home";
+            case GLFW.GLFW_KEY_END -> "End";
+            case GLFW.GLFW_KEY_LEFT_SHIFT -> "左Shift";
+            case GLFW.GLFW_KEY_LEFT_CONTROL -> "左Ctrl";
+            case GLFW.GLFW_KEY_LEFT_ALT -> "左Alt";
+            case GLFW.GLFW_KEY_RIGHT_SHIFT -> "右Shift";
+            case GLFW.GLFW_KEY_RIGHT_CONTROL -> "右Ctrl";
+            case GLFW.GLFW_KEY_RIGHT_ALT -> "右Alt";
             case GLFW.GLFW_KEY_F1 -> "F1";
             case GLFW.GLFW_KEY_F2 -> "F2";
             case GLFW.GLFW_KEY_F3 -> "F3";
@@ -2959,9 +2959,9 @@ public class NanoVGClickGuiScreen extends Screen {
     }
 
     private enum ConfigTab {
-        MODULE("Module", "module"),
-        BIND("Bind", "bind"),
-        ONLINE("Online", "online");
+        MODULE("模块", "模块"),
+        BIND("按键", "按键"),
+        ONLINE("在线", "在线");
 
         private final String label;
         private final String emptyName;

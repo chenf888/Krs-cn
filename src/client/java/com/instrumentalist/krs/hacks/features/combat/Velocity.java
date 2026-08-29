@@ -20,25 +20,25 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class Velocity extends Module {
     @Setting
-    private final ListValue mode = new ListValue("Mode", new String[]{"Standard", "Hypixel NCP", "Jump Reset"}, "Standard");
+    private final ListValue mode = new ListValue("模式", new String[]{"Standard", "Hypixel NCP", "Jump Reset"}, "Standard");
 
     @Setting
-    private final FloatValue jumpResetChance = new FloatValue("Jump Reset Chance", 100f, 0f, 100f, "%", this::isJumpResetMode);
+    private final FloatValue jumpResetChance = new FloatValue("跳跃重置概率", 100f, 0f, 100f, "%", this::isJumpResetMode);
 
     @Setting
-    private final ListValue jumpResetCooldown = new ListValue("Jump Reset Cooldown", new String[]{"Delay", "Received Hits", "None"}, "Delay", this::isJumpResetMode);
+    private final ListValue jumpResetCooldown = new ListValue("跳跃重置冷却", new String[]{"Delay", "Received Hits", "None"}, "Delay", this::isJumpResetMode);
 
     @Setting
-    private final IntValue jumpResetTicksUntilJump = new IntValue("Jump Reset Until Jump", 2, 0, 20, "t", () -> isJumpResetMode() && jumpResetCooldown.get().equalsIgnoreCase("delay"));
+    private final IntValue jumpResetTicksUntilJump = new IntValue("跳跃重置前跳数", 2, 0, 20, "t", () -> isJumpResetMode() && jumpResetCooldown.get().equalsIgnoreCase("delay"));
 
     @Setting
-    private final IntValue jumpResetHitsUntilJump = new IntValue("Jump Reset Hits Until Jump", 2, 0, 10, "x", () -> isJumpResetMode() && jumpResetCooldown.get().equalsIgnoreCase("received hits"));
+    private final IntValue jumpResetHitsUntilJump = new IntValue("跳跃重置前命中数", 2, 0, 10, "x", () -> isJumpResetMode() && jumpResetCooldown.get().equalsIgnoreCase("received hits"));
 
     private int jumpResetLimitUntilJump = 0;
     private boolean jumpResetFallDamage = false;
 
     public Velocity() {
-        super("Velocity", ModuleCategory.Combat, GLFW.GLFW_KEY_UNKNOWN, false, true);
+        super("受击速度", ModuleCategory.Combat, GLFW.GLFW_KEY_UNKNOWN, false, true);
     }
 
     @Override

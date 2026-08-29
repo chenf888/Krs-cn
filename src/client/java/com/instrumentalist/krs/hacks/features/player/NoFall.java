@@ -22,10 +22,10 @@ import java.util.Locale;
 
 public class NoFall extends Module {
     @Setting
-    private final ListValue mode = new ListValue("Mode", new String[]{"Packet", "Less Packet", "Spoof", "No Ground", "Hypixel NCP", "Cubecraft Reduce", "Grim 1.9+"}, "Packet");
+    private final ListValue mode = new ListValue("模式", new String[]{"Packet", "Less Packet", "Spoof", "No Ground", "Hypixel NCP", "Cubecraft Reduce", "Grim 1.9+"}, "Packet");
 
     @Setting
-    private final BooleanValue modifiedGrim = new BooleanValue("Modified Grim", false, () -> mode.get().equalsIgnoreCase("grim 1.9+"));
+    private final BooleanValue modifiedGrim = new BooleanValue("改良Grim", false, () -> mode.get().equalsIgnoreCase("grim 1.9+"));
 
     private int movementFallTicks = 0;
     private boolean timered = false;
@@ -41,7 +41,7 @@ public class NoFall extends Module {
     private double grimLastY = Double.NaN;
 
     public NoFall() {
-        super("No Fall", ModuleCategory.Player, GLFW.GLFW_KEY_UNKNOWN, false, true);
+        super("防摔落", ModuleCategory.Player, GLFW.GLFW_KEY_UNKNOWN, false, true);
     }
 
     @Override

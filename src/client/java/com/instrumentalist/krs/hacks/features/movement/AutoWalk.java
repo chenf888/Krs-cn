@@ -14,23 +14,23 @@ import java.util.Locale;
 
 public class AutoWalk extends Module {
     @Setting
-    private final ListValue mode = new ListValue("Mode", new String[]{"Forward", "Backward", "Left", "Right", "Jump", "Random"}, "Forward");
+    private final ListValue mode = new ListValue("模式", new String[]{"Forward", "Backward", "Left", "Right", "Jump", "Random"}, "Forward");
 
     @Setting
-    private final BooleanValue onlyInGame = new BooleanValue("Only In Game", true);
+    private final BooleanValue onlyInGame = new BooleanValue("仅游戏中", true);
 
     @Setting
-    private final BooleanValue sprint = new BooleanValue("Sprint", false);
+    private final BooleanValue sprint = new BooleanValue("疾跑", false);
 
     @Setting
-    private final IntValue switchTicks = new IntValue("Switch Ticks", 20, 5, 100, "t", () -> mode.get().equalsIgnoreCase("random"));
+    private final IntValue switchTicks = new IntValue("切换刻", 20, 5, 100, "t", () -> mode.get().equalsIgnoreCase("random"));
 
     private boolean pressingMovement = false;
     private int ticks = 0;
     private int randomDirection = 0;
 
     public AutoWalk() {
-        super("Auto Walk", ModuleCategory.Movement, GLFW.GLFW_KEY_UNKNOWN, false, true);
+        super("自动行走", ModuleCategory.Movement, GLFW.GLFW_KEY_UNKNOWN, false, true);
     }
 
     @Override

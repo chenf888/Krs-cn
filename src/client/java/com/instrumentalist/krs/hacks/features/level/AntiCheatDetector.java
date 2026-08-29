@@ -16,7 +16,7 @@ import java.util.List;
 public class AntiCheatDetector extends Module {
 
     public AntiCheatDetector() {
-        super("Anti Cheat Detector", ModuleCategory.Level, GLFW.GLFW_KEY_UNKNOWN, false, false);
+        super("反作弊检测", ModuleCategory.Level, GLFW.GLFW_KEY_UNKNOWN, false, false);
     }
 
     public static boolean shouldNotify = false;
@@ -60,7 +60,7 @@ public class AntiCheatDetector extends Module {
         }
 
         if (shouldNotify && ModuleManager.plChecked) {
-            Client.notificationManager.addNotification("Anti Cheat Detector", getAcStrings());
+            Client.notificationManager.addNotification("反作弊检测", getAcStrings());
             shouldNotify = false;
         }
     }

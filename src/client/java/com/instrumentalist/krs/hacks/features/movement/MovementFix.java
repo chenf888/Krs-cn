@@ -21,7 +21,7 @@ public class MovementFix extends Module {
     private static boolean sprintConditionOverridden = false;
 
     public MovementFix() {
-        super("Movement Fix", ModuleCategory.Movement, GLFW.GLFW_KEY_UNKNOWN, false, true);
+        super("移动修正", ModuleCategory.Movement, GLFW.GLFW_KEY_UNKNOWN, false, true);
     }
 
     public static boolean shouldFixMovement() {

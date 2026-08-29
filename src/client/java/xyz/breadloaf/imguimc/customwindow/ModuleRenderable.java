@@ -91,9 +91,9 @@ public class ModuleRenderable implements Renderable, IMinecraft {
 
     @Override
     public void render() {
-        renderWindow("Modules", this::renderModulesWindow);
-        renderWindow("Commands", this::renderCommandWindow);
-        renderWindow("Configs", this::renderConfigsWindow);
+        renderWindow("模块", this::renderModulesWindow);
+        renderWindow("命令", this::renderCommandWindow);
+        renderWindow("配置", this::renderConfigsWindow);
         loadedConfig = true;
     }
 
@@ -122,12 +122,12 @@ public class ModuleRenderable implements Renderable, IMinecraft {
     }
 
     private void renderModulesWindow() {
-        if (imgui.ImGui.beginTabBar("Module Categories")) {
+        if (imgui.ImGui.beginTabBar("模块分类")) {
             try {
                 for (ModuleCategory category : ModuleCategory.values()) {
                     if (category == null) continue;
 
-                    if (imgui.ImGui.beginTabItem(category.name())) {
+                    if (imgui.ImGui.beginTabItem(category.displayName())) {
                         try {
                             renderCategoryModules(category);
                         } finally {
@@ -136,7 +136,7 @@ public class ModuleRenderable implements Renderable, IMinecraft {
                     }
                 }
 
-                if (imgui.ImGui.beginTabItem("Search")) {
+                if (imgui.ImGui.beginTabItem("搜索")) {
                     try {
                         renderSearchModules();
                     } finally {
@@ -161,19 +161,19 @@ public class ModuleRenderable implements Renderable, IMinecraft {
 
     private void renderSearchModules() {
         if (imgui.ImGui.beginChild("SearchPanel", 0, imgui.ImGui.getContentRegionAvailY(), false)) {
-            imgui.ImGui.text("Search Modules:");
-            imgui.ImGui.inputText("Search", searchQuery);
+            imgui.ImGui.text("搜索模块:");
+            imgui.ImGui.inputText("搜索", searchQuery);
 
             String query = searchQuery.get().toLowerCase().replace(" ", "");
             List<Module> searchResults = new ArrayList<>();
             for (Module module : ModuleManager.allModules) {
                 if (module.moduleCategory == null || module.moduleCategory == ModuleCategory.Dev) continue;
-                if (query.isEmpty() || module.moduleName.replace(" ", "").toLowerCase().contains(query) || module.moduleCategory.name().toLowerCase().contains(query))
+                if (query.isEmpty() || module.moduleName.replace(" ", "").toLowerCase().contains(query) || module.moduleCategory.displayName().toLowerCase().contains(query))
                     searchResults.add(module);
             }
 
             imgui.ImGui.spacing();
-            imgui.ImGui.text("Matches: " + searchResults.size());
+            imgui.ImGui.text("匹配: " + searchResults.size());
             imgui.ImGui.spacing();
 
             if (imgui.ImGui.beginChild("SearchResults", 0, imgui.ImGui.getContentRegionAvailY(), true)) {
@@ -220,9 +220,9 @@ public class ModuleRenderable implements Renderable, IMinecraft {
     }
 
     private void renderCommandWindow() {
-        if (imgui.ImGui.beginTabBar("Command Categories")) {
+        if (imgui.ImGui.beginTabBar("命令分类")) {
             try {
-                if (imgui.ImGui.beginTabItem("Command")) {
+                if (imgui.ImGui.beginTabItem("命令")) {
                     try {
                         renderCommandTab();
                     } finally {
@@ -230,7 +230,7 @@ public class ModuleRenderable implements Renderable, IMinecraft {
                     }
                 }
 
-                if (imgui.ImGui.beginTabItem("Multiplay")) {
+                if (imgui.ImGui.beginTabItem("多人")) {
                     try {
                         renderMultiPlayTab();
                     } finally {
@@ -245,16 +245,16 @@ public class ModuleRenderable implements Renderable, IMinecraft {
 
     private void renderCommandTab() {
         if (imgui.ImGui.beginChild("CommandPanel", 0, imgui.ImGui.getContentRegionAvailY(), false)) {
-            imgui.ImGui.text("Command Execution");
+            imgui.ImGui.text("命令执行");
 
             if (commandLogs.isEmpty()) {
-                addCommandLog("Type commands here");
+                addCommandLog("在此输入命令");
             }
 
             imgui.ImGui.spacing();
-            imgui.ImGui.text("Enter a command:");
+            imgui.ImGui.text("输入命令:");
 
-            if (imgui.ImGui.inputText("Input here", commandInput, ImGuiInputTextFlags.EnterReturnsTrue)) {
+            if (imgui.ImGui.inputText("在此输入", commandInput, ImGuiInputTextFlags.EnterReturnsTrue)) {
                 executeCommand(commandInput.get(), false);
                 commandInput.set("");
                 imgui.ImGui.setKeyboardFocusHere(-1);
@@ -278,12 +278,12 @@ public class ModuleRenderable implements Renderable, IMinecraft {
 
     private static void renderMultiPlayTab() {
         if (imgui.ImGui.beginChild("MultiPlayPanel", 0, imgui.ImGui.getContentRegionAvailY(), false)) {
-            if (imgui.ImGui.button("Force disconnect from server")) {
+            if (imgui.ImGui.button("强制断开服务器连接")) {
                 if (mc.level != null)
-                    mc.level.disconnect(Component.literal("Disconnected"));
+                    mc.level.disconnect(Component.literal("已断开连接"));
             }
 
-                imgui.ImGui.text("Player List");
+                imgui.ImGui.text("玩家列表");
             if (imgui.ImGui.beginChild("PlayerList", 0, imgui.ImGui.getContentRegionAvailY(), true)) {
                 if (mc.level != null && mc.getConnection() != null) {
                     List<AbstractClientPlayer> sortedPlayerEntities = new ArrayList<>(mc.level.players());
@@ -292,18 +292,18 @@ public class ModuleRenderable implements Renderable, IMinecraft {
                     for (AbstractClientPlayer playerEntity : sortedPlayerEntities) {
                         PlayerInfo entry = mc.getConnection().getPlayerInfo(playerEntity.getUUID());
                         String playerName = playerEntity.getName().getString();
-                        String showString = entry != null && playerEntity instanceof LocalPlayer ? "[You] Name: " + playerName + ", Ping: " + entry.getLatency() : entry != null ? "Name: " + playerName + ", Ping: " + entry.getLatency() : "Name: " + playerName + ", Ping: null";
+                        String showString = entry != null && playerEntity instanceof LocalPlayer ? "[你] 名字: " + playerName + ", 延迟: " + entry.getLatency() : entry != null ? "名字: " + playerName + ", 延迟: " + entry.getLatency() : "名字: " + playerName + ", 延迟: 无";
                         imgui.ImGui.pushID(playerName);
                         try {
                             if (imgui.ImGui.collapsingHeader(showString)) {
                                 imgui.ImGui.separator();
                                 imgui.ImGui.indent();
 
-                                if (imgui.ImGui.button("Kill"))
+                                if (imgui.ImGui.button("击杀"))
                                     mc.getConnection().sendCommand("kill " + playerName);
-                                if (imgui.ImGui.button("Teleport"))
+                                if (imgui.ImGui.button("传送"))
                                     mc.getConnection().sendCommand("tp " + playerName);
-                                if (imgui.ImGui.button("Crash"))
+                                if (imgui.ImGui.button("崩溃"))
                                     mc.getConnection().sendCommand("execute at " + playerName + " run particle minecraft:explosion ~ ~ ~ 0.1 0.1 0.1 0.01 100000000 force");
 
                                 imgui.ImGui.unindent();
@@ -322,9 +322,9 @@ public class ModuleRenderable implements Renderable, IMinecraft {
     }
 
     private void renderConfigsWindow() {
-        if (imgui.ImGui.beginTabBar("Config Categories")) {
+        if (imgui.ImGui.beginTabBar("配置分类")) {
             try {
-                if (imgui.ImGui.beginTabItem("Module")) {
+                if (imgui.ImGui.beginTabItem("模块")) {
                     try {
                         renderModuleConfigsTab();
                     } finally {
@@ -332,7 +332,7 @@ public class ModuleRenderable implements Renderable, IMinecraft {
                     }
                 }
 
-                if (imgui.ImGui.beginTabItem("Bind")) {
+                if (imgui.ImGui.beginTabItem("按键")) {
                     try {
                         renderBindConfigsTab();
                     } finally {
@@ -340,7 +340,7 @@ public class ModuleRenderable implements Renderable, IMinecraft {
                     }
                 }
 
-                if (imgui.ImGui.beginTabItem("Online")) {
+                if (imgui.ImGui.beginTabItem("在线")) {
                     try {
                         renderOnlineConfigsTab();
                     } finally {
@@ -355,8 +355,8 @@ public class ModuleRenderable implements Renderable, IMinecraft {
 
     private void renderModuleConfigsTab() {
         if (imgui.ImGui.beginChild("ModuleConfigsPanel", 0, imgui.ImGui.getContentRegionAvailY(), false)) {
-            imgui.ImGui.text("Create a new Module Config:");
-            if (imgui.ImGui.inputText("New Config Name", newModuleConfigName, ImGuiInputTextFlags.EnterReturnsTrue)) {
+            imgui.ImGui.text("创建新模块配置:");
+            if (imgui.ImGui.inputText("配置名称", newModuleConfigName, ImGuiInputTextFlags.EnterReturnsTrue)) {
                 String configName = newModuleConfigName.get();
                 if (!configName.isEmpty()) {
                     Client.configManager.saveConfigFile(Client.configManager.configCurrent, false);
@@ -371,11 +371,11 @@ public class ModuleRenderable implements Renderable, IMinecraft {
 
             fillSortedConfigs(moduleConfigScratch, FileUtil.INSTANCE.getModuleFiles());
             if (!moduleConfigScratch.isEmpty()) {
-                imgui.ImGui.text("Available Module Configs:");
+                imgui.ImGui.text("可用模块配置:");
                 if (imgui.ImGui.beginChild("ModuleConfigsList", 0, imgui.ImGui.getContentRegionAvailY(), true)) {
                     for (Path config : moduleConfigScratch) {
                         String configName = configName(config);
-                        String showConfigName = configName.equalsIgnoreCase(Client.configManager.configCurrent) ? configName + " <- Current" : configName;
+                        String showConfigName = configName.equalsIgnoreCase(Client.configManager.configCurrent) ? configName + " <- 当前" : configName;
 
                         if (imgui.ImGui.selectable(showConfigName)) {
                             saveCurrentModuleConfig();
@@ -387,7 +387,7 @@ public class ModuleRenderable implements Renderable, IMinecraft {
                 }
                 imgui.ImGui.endChild();
             } else {
-                imgui.ImGui.text("No module configs found.");
+                imgui.ImGui.text("未找到模块配置。");
             }
         }
         imgui.ImGui.endChild();
@@ -395,8 +395,8 @@ public class ModuleRenderable implements Renderable, IMinecraft {
 
     private void renderBindConfigsTab() {
         if (imgui.ImGui.beginChild("BindConfigsPanel", 0, imgui.ImGui.getContentRegionAvailY(), false)) {
-            imgui.ImGui.text("Create a new Bind Config:");
-            if (imgui.ImGui.inputText("New Config Name", newBindConfigName, ImGuiInputTextFlags.EnterReturnsTrue)) {
+            imgui.ImGui.text("创建新按键配置:");
+            if (imgui.ImGui.inputText("配置名称", newBindConfigName, ImGuiInputTextFlags.EnterReturnsTrue)) {
                 String configName = newBindConfigName.get();
                 if (!configName.isEmpty()) {
                     Client.configManager.saveBindFile(Client.configManager.bindCurrent, false);
@@ -411,7 +411,7 @@ public class ModuleRenderable implements Renderable, IMinecraft {
 
             fillSortedConfigs(bindConfigScratch, FileUtil.INSTANCE.getBindFiles());
             if (!bindConfigScratch.isEmpty()) {
-                imgui.ImGui.text("Available Bind Configs:");
+                imgui.ImGui.text("可用按键配置:");
                 if (imgui.ImGui.beginChild("BindConfigsList", 0, imgui.ImGui.getContentRegionAvailY(), true)) {
                     for (Path config : bindConfigScratch) {
                         String configName = configName(config);
@@ -427,7 +427,7 @@ public class ModuleRenderable implements Renderable, IMinecraft {
                 }
                 imgui.ImGui.endChild();
             } else {
-                imgui.ImGui.text("No bind configs found.");
+                imgui.ImGui.text("未找到按键配置。");
             }
         }
         imgui.ImGui.endChild();
@@ -437,7 +437,7 @@ public class ModuleRenderable implements Renderable, IMinecraft {
         if (imgui.ImGui.beginChild("OnlineConfigsPanel", 0, imgui.ImGui.getContentRegionAvailY(), false)) {
             List<String> moduleConfigs = FileUtil.INSTANCE.getOnlineCfgs();
             if (!moduleConfigs.isEmpty()) {
-                imgui.ImGui.text("Available Online Configs:");
+                imgui.ImGui.text("可用在线配置:");
                 if (imgui.ImGui.beginChild("OnlineConfigsList", 0, imgui.ImGui.getContentRegionAvailY(), true)) {
                     for (String config : moduleConfigs) {
                         String configName = config.replace(".json", "");
@@ -451,7 +451,7 @@ public class ModuleRenderable implements Renderable, IMinecraft {
                 }
                 imgui.ImGui.endChild();
             } else {
-                imgui.ImGui.text("No online configs found.");
+                imgui.ImGui.text("未找到在线配置。");
             }
         }
         imgui.ImGui.endChild();

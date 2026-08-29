@@ -37,19 +37,19 @@ import java.util.Set;
 public class Breaker extends Module {
 
     @Setting
-    private static final ListValue mode = new ListValue("Mode", new String[]{"Normal", "Hypixel", "Cubecraft Eggwars"}, "Normal");
+    private static final ListValue mode = new ListValue("模式", new String[]{"Normal", "Hypixel", "Cubecraft Eggwars"}, "Normal");
 
     @Setting
-    private static final ListValue clickMode = new ListValue("Click Mode", new String[]{"Break", "Place"}, "Break", () -> mode.get().equalsIgnoreCase("normal"));
+    private static final ListValue clickMode = new ListValue("点击模式", new String[]{"Break", "Place"}, "Break", () -> mode.get().equalsIgnoreCase("normal"));
 
     @Setting
-    private static final ListValue block = new ListValue("Block", new String[]{"Bed", "Egg"}, "Bed", () -> mode.get().equalsIgnoreCase("normal"));
+    private static final ListValue block = new ListValue("方块", new String[]{"Bed", "Egg"}, "Bed", () -> mode.get().equalsIgnoreCase("normal"));
 
     @Setting
-    private static final FloatValue range = new FloatValue("Range", 4f, 1f, 6f, "m");
+    private static final FloatValue range = new FloatValue("范围", 4f, 1f, 6f, "m");
 
     @Setting
-    private static final BooleanValue autoWhitelist = new BooleanValue("Auto Whitelist", false);
+    private static final BooleanValue autoWhitelist = new BooleanValue("自动白名单", false);
 
     private static boolean wasBreaking = false;
 
@@ -67,12 +67,12 @@ public class Breaker extends Module {
     private static long autoWhitelistLastScanTime = 0L;
 
     public Breaker() {
-        super("Breaker", ModuleCategory.Level, GLFW.GLFW_KEY_UNKNOWN, false, true);
+        super("破坏者", ModuleCategory.Level, GLFW.GLFW_KEY_UNKNOWN, false, true);
     }
 
     @Override
     public String description() {
-        return "Clear whitelist with right control";
+        return "按右 Ctrl 清除白名单";
     }
 
     @Override
@@ -89,13 +89,13 @@ public class Breaker extends Module {
         resetBreakingState(mc.player);
 
         if (resetAutoWhitelist(autoWhitelist.get()))
-            Client.notificationManager.addNotification("Auto Whitelist", "Reset bed whitelist");
+            Client.notificationManager.addNotification("自动白名单", "已重置床白名单");
     }
 
     @Override
     public void onKey(KeyboardEvent event) {
         if (event.action == GLFW.GLFW_PRESS && event.key == GLFW.GLFW_KEY_RIGHT_CONTROL && resetAutoWhitelist(true))
-            Client.notificationManager.addNotification("Auto Whitelist", "Reset bed whitelist");
+            Client.notificationManager.addNotification("自动白名单", "已重置床白名单");
     }
 
     public static boolean resetAutoWhitelist(boolean searchAgain) {
@@ -252,7 +252,7 @@ public class Breaker extends Module {
         autoWhitelistSearching = false;
 
         if (addedBed)
-            Client.notificationManager.addNotification("Auto Whitelist", "Added bed to whitelist: " + formatBlockPos(targetPos));
+            Client.notificationManager.addNotification("自动白名单", "Added bed to whitelist: " + formatBlockPos(targetPos));
 
         if (cachedBedPos != null && !isTargetAvailable(level, cachedBedPos)) {
             cachedBedPos = null;

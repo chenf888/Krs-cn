@@ -22,19 +22,19 @@ import java.util.Collections;
 public class ChestStealer extends Module {
 
     @Setting
-    private static final IntValue startDelay = new IntValue("Start Delay", 2, 0, 10);
+    private static final IntValue startDelay = new IntValue("起始延迟", 2, 0, 10);
 
     @Setting
-    private static final IntValue maxDelay = new IntValue("Max Delay", 2, 0, 10);
+    private static final IntValue maxDelay = new IntValue("最大延迟", 2, 0, 10);
 
     @Setting
-    private static final IntValue minDelay = new IntValue("Min Delay", 0, 0, 10);
+    private static final IntValue minDelay = new IntValue("最小延迟", 0, 0, 10);
 
     @Setting
-    public static final BooleanValue blink = new BooleanValue("Blink", false);
+    public static final BooleanValue blink = new BooleanValue("闪烁", false);
 
     @Setting
-    private static final BooleanValue cameraMove = new BooleanValue("Camera Move", false);
+    private static final BooleanValue cameraMove = new BooleanValue("相机移动", false);
 
     private int tickCounter = 0;
     private int startCounter = 0;
@@ -44,7 +44,7 @@ public class ChestStealer extends Module {
     private final ArrayList<Integer> slotIndices = new ArrayList<>(27);
 
     public ChestStealer() {
-        super("Chest Stealer", ModuleCategory.Player, GLFW.GLFW_KEY_UNKNOWN, false, true);
+        super("箱子窃取", ModuleCategory.Player, GLFW.GLFW_KEY_UNKNOWN, false, true);
     }
 
     public static boolean shouldMoveCamera() {

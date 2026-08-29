@@ -6,7 +6,7 @@ import org.lwjgl.glfw.GLFW;
 
 public class FullBright extends Module {
     public FullBright() {
-        super("Full Bright", ModuleCategory.Render, GLFW.GLFW_KEY_UNKNOWN, false, false);
+        super("全屏亮度", ModuleCategory.Render, GLFW.GLFW_KEY_UNKNOWN, false, false);
     }
 
     @Override

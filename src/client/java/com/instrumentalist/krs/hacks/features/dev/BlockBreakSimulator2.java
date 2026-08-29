@@ -19,7 +19,7 @@ import org.lwjgl.glfw.GLFW;
 public class BlockBreakSimulator2 extends Module {
 
     public BlockBreakSimulator2() {
-        super("Block Break Simulator 2", ModuleCategory.Dev, GLFW.GLFW_KEY_UNKNOWN, false, true);
+        super("方块破坏模拟器 2", ModuleCategory.Dev, GLFW.GLFW_KEY_UNKNOWN, false, true);
     }
 
     @Override

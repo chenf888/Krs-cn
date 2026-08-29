@@ -14,21 +14,21 @@ import java.util.Locale;
 
 public class FastLadder extends Module {
     @Setting
-    private final ListValue mode = new ListValue("Mode", new String[]{"Vanilla", "Timer"}, "Vanilla");
+    private final ListValue mode = new ListValue("模式", new String[]{"Vanilla", "Timer"}, "Vanilla");
 
     @Setting
-    private final BooleanValue resetY = new BooleanValue("ResetY", true, () -> mode.get().equalsIgnoreCase("vanilla"));
+    private final BooleanValue resetY = new BooleanValue("重置Y", true, () -> mode.get().equalsIgnoreCase("vanilla"));
 
     @Setting
-    private final FloatValue speed = new FloatValue("Speed", 0.4f, 0.2f, 1f, () -> mode.get().equalsIgnoreCase("vanilla"));
+    private final FloatValue speed = new FloatValue("速度", 0.4f, 0.2f, 1f, () -> mode.get().equalsIgnoreCase("vanilla"));
 
     @Setting
-    private final FloatValue timerSpeed = new FloatValue("Timer Speed", 2f, 1.1f, 3f, () -> mode.get().equalsIgnoreCase("timer"));
+    private final FloatValue timerSpeed = new FloatValue("计时器速度", 2f, 1.1f, 3f, () -> mode.get().equalsIgnoreCase("timer"));
 
     private boolean wasClimbing = false;
 
     public FastLadder() {
-        super("Fast Ladder", ModuleCategory.Player, GLFW.GLFW_KEY_UNKNOWN, false, true);
+        super("快速爬梯", ModuleCategory.Player, GLFW.GLFW_KEY_UNKNOWN, false, true);
     }
 
     @Override

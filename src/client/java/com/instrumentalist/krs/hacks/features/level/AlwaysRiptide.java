@@ -22,7 +22,7 @@ public class AlwaysRiptide extends Module {
     private AABB lastBox = null;
 
     public AlwaysRiptide() {
-        super("Always Riptide", ModuleCategory.Level, GLFW.GLFW_KEY_UNKNOWN, false, true);
+        super("总是激流", ModuleCategory.Level, GLFW.GLFW_KEY_UNKNOWN, false, true);
     }
 
     @Override

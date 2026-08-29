@@ -16,11 +16,11 @@ import xyz.breadloaf.imguimc.screen.EmptyScreen;
 public class InventoryMove extends Module {
 
     public InventoryMove() {
-        super("Inventory Move", ModuleCategory.Movement, GLFW.GLFW_KEY_UNKNOWN, false, true);
+        super("背包移动", ModuleCategory.Movement, GLFW.GLFW_KEY_UNKNOWN, false, true);
     }
 
     @Setting
-    private static final BooleanValue inventoryOnly = new BooleanValue("Inventory Only", false);
+    private static final BooleanValue inventoryOnly = new BooleanValue("仅背包", false);
 
     public static void moveFreely() {
         if (canMoveFreely() && mc.gui.screen() != null) {

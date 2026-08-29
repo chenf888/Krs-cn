@@ -21,7 +21,7 @@ public class AutoTool extends Module {
     private int restoreDelayTicks = 0;
 
     public AutoTool() {
-        super("Auto Tool", ModuleCategory.Player, GLFW.GLFW_KEY_UNKNOWN, false, true);
+        super("自动工具", ModuleCategory.Player, GLFW.GLFW_KEY_UNKNOWN, false, true);
     }
 
     @Override

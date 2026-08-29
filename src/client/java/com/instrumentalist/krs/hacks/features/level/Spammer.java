@@ -16,27 +16,27 @@ import xyz.breadloaf.imguimc.customwindow.ModuleRenderable;
 
 public class Spammer extends Module {
     @Setting
-    private final ListValue mode = new ListValue("Mode", new String[]{"Normal"}, "Normal");
+    private final ListValue mode = new ListValue("模式", new String[]{"Normal"}, "Normal");
 
     @Setting
-    private final TextValue message = new TextValue("Message", "cocaine", () -> mode.get().equalsIgnoreCase("normal"));
+    private final TextValue message = new TextValue("消息", "cocaine", () -> mode.get().equalsIgnoreCase("normal"));
 
     @Setting
-    private final IntValue delay = new IntValue("Delay", 1010, 0, 3000);
+    private final IntValue delay = new IntValue("延迟", 1010, 0, 3000);
 
     @Setting
-    private final TextValue firstChar = new TextValue("First Char", "");
+    private final TextValue firstChar = new TextValue("首字符", "");
 
     @Setting
-    private final BooleanValue randomSuffix = new BooleanValue("Random Suffix", true);
+    private final BooleanValue randomSuffix = new BooleanValue("随机后缀", true);
 
     @Setting
-    private final BooleanValue partyChatMode = new BooleanValue("Party Chat Mode", false);
+    private final BooleanValue partyChatMode = new BooleanValue("队伍聊天模式", false);
 
     private final MSTimer delayTimer = new MSTimer();
 
     public Spammer() {
-        super("Spammer", ModuleCategory.Level, GLFW.GLFW_KEY_UNKNOWN, false, true);
+        super("刷屏器", ModuleCategory.Level, GLFW.GLFW_KEY_UNKNOWN, false, true);
     }
 
     @Override

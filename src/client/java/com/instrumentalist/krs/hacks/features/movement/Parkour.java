@@ -12,15 +12,15 @@ import org.lwjgl.glfw.GLFW;
 
 public class Parkour extends Module {
     @Setting
-    private final IntValue jumpDelay = new IntValue("Jump Delay", 30, 0, 300, "ms");
+    private final IntValue jumpDelay = new IntValue("跳跃延迟", 30, 0, 300, "ms");
 
     @Setting
-    private final BooleanValue onlyForward = new BooleanValue("Only Forward", false);
+    private final BooleanValue onlyForward = new BooleanValue("仅向前", false);
 
     private final MSTimer jumpTimer = new MSTimer();
 
     public Parkour() {
-        super("Parkour", ModuleCategory.Movement, GLFW.GLFW_KEY_UNKNOWN, false, true);
+        super("跑酷", ModuleCategory.Movement, GLFW.GLFW_KEY_UNKNOWN, false, true);
     }
 
     @Override

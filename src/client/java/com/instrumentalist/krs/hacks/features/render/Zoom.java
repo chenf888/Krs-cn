@@ -18,11 +18,11 @@ import xyz.breadloaf.imguimc.customwindow.ModuleRenderable;
 public class Zoom extends Module {
 
     public Zoom() {
-        super("Zoom", ModuleCategory.Render, GLFW.GLFW_KEY_UNKNOWN, true, false);
+        super("缩放", ModuleCategory.Render, GLFW.GLFW_KEY_UNKNOWN, true, false);
     }
 
     @Setting
-    private final KeyBindValue zoomKey = new KeyBindValue("Zoom Key (Bind config)", GLFW.GLFW_KEY_UNKNOWN, KeyBindValue.ConfigStorage.BIND_CONFIG);
+    private final KeyBindValue zoomKey = new KeyBindValue("缩放按键(绑定配置)", GLFW.GLFW_KEY_UNKNOWN, KeyBindValue.ConfigStorage.BIND_CONFIG);
 
     private static boolean zooming = false;
     private static Float prevFov = null;

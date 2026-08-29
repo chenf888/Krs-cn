@@ -15,19 +15,19 @@ import java.util.Locale;
 
 public class AutoRespawn extends Module {
     @Setting
-    private final ListValue mode = new ListValue("Mode", new String[]{"Packet", "Client", "Both"}, "Packet");
+    private final ListValue mode = new ListValue("模式", new String[]{"Packet", "Client", "Both"}, "Packet");
 
     @Setting
-    private final IntValue delay = new IntValue("Delay", 0, 0, 20, "t");
+    private final IntValue delay = new IntValue("延迟", 0, 0, 20, "t");
 
     @Setting
-    private final BooleanValue closeDeathScreen = new BooleanValue("Close Death Screen", true);
+    private final BooleanValue closeDeathScreen = new BooleanValue("关闭死亡界面", true);
 
     private int deathTicks = 0;
     private boolean requested = false;
 
     public AutoRespawn() {
-        super("Auto Respawn", ModuleCategory.Player, GLFW.GLFW_KEY_UNKNOWN, false, true);
+        super("自动重生", ModuleCategory.Player, GLFW.GLFW_KEY_UNKNOWN, false, true);
     }
 
     @Override

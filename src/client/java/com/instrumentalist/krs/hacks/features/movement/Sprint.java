@@ -21,24 +21,24 @@ import org.lwjgl.glfw.GLFW;
 public class Sprint extends Module {
 
     @Setting
-    private static final BooleanValue autoSprint = new BooleanValue("Auto Sprint", true);
+    private static final BooleanValue autoSprint = new BooleanValue("自动疾跑", true);
 
     @Setting
-    public static final BooleanValue multiDirection = new BooleanValue("Multi Direction", true, autoSprint::get);
+    public static final BooleanValue multiDirection = new BooleanValue("多方向", true, autoSprint::get);
 
     @Setting
-    private static final BooleanValue keepSprint = new BooleanValue("Keep Sprint", true);
+    private static final BooleanValue keepSprint = new BooleanValue("保持疾跑", true);
 
     @Setting
-    private static final BooleanValue silentSprint = new BooleanValue("Silent", true);
+    private static final BooleanValue silentSprint = new BooleanValue("静默", true);
 
     @Setting
-    private static final BooleanValue wallCheck = new BooleanValue("Wall Check", false, autoSprint::get);
+    private static final BooleanValue wallCheck = new BooleanValue("墙体检测", false, autoSprint::get);
 
     private boolean swimming = false;
 
     public Sprint() {
-        super("Sprint", ModuleCategory.Movement, GLFW.GLFW_KEY_UNKNOWN, false, true);
+        super("疾跑", ModuleCategory.Movement, GLFW.GLFW_KEY_UNKNOWN, false, true);
     }
 
     @Override

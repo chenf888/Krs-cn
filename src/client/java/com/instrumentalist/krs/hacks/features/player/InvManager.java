@@ -31,25 +31,25 @@ import java.util.Map;
 public class InvManager extends Module {
 
     @Setting
-    private final IntValue startDelay = new IntValue("Start Delay", 2, 0, 10);
+    private final IntValue startDelay = new IntValue("起始延迟", 2, 0, 10);
 
     @Setting
-    private final IntValue maxItemDelay = new IntValue("Max Item Delay", 2, 0, 10);
+    private final IntValue maxItemDelay = new IntValue("最大物品延迟", 2, 0, 10);
 
     @Setting
-    private final IntValue minItemDelay = new IntValue("Min Item Delay", 0, 0, 10);
+    private final IntValue minItemDelay = new IntValue("最小物品延迟", 0, 0, 10);
 
     @Setting
-    private final IntValue maxArmorDelay = new IntValue("Max Armor Delay", 2, 0, 10);
+    private final IntValue maxArmorDelay = new IntValue("最大盔甲延迟", 2, 0, 10);
 
     @Setting
-    private final IntValue minArmorDelay = new IntValue("Min Armor Delay", 0, 0, 10);
+    private final IntValue minArmorDelay = new IntValue("最小盔甲延迟", 0, 0, 10);
 
     @Setting
-    private final BooleanValue cleaner = new BooleanValue("Cleaner", true);
+    private final BooleanValue cleaner = new BooleanValue("清理", true);
 
     @Setting
-    private final BooleanValue onlyInInventory = new BooleanValue("Only in Inventory", false);
+    private final BooleanValue onlyInInventory = new BooleanValue("仅背包", false);
 
     private int tickCounter = 0;
     private int startCounter = 0;
@@ -132,7 +132,7 @@ public class InvManager extends Module {
     );
 
     public InvManager() {
-        super("Inv Manager", ModuleCategory.Player, GLFW.GLFW_KEY_UNKNOWN, false, true);
+        super("背包管理", ModuleCategory.Player, GLFW.GLFW_KEY_UNKNOWN, false, true);
     }
 
     @Override

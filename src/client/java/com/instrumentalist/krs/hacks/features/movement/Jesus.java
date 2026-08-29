@@ -27,10 +27,10 @@ public class Jesus extends Module {
     private boolean wasInLiquid;
 
     @Setting
-    private final ListValue mode = new ListValue("Mode", new String[]{"Vanilla", "Verus", "Bouncy", "Mini Jump"}, "Vanilla");
+    private final ListValue mode = new ListValue("模式", new String[]{"Vanilla", "Verus", "Bouncy", "Mini Jump"}, "Vanilla");
 
     public Jesus() {
-        super("Jesus", ModuleCategory.Movement, GLFW.GLFW_KEY_UNKNOWN, false, true);
+        super("水上行走", ModuleCategory.Movement, GLFW.GLFW_KEY_UNKNOWN, false, true);
     }
 
     @Override

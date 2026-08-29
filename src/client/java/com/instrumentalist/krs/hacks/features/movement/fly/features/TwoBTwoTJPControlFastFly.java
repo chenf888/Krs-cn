@@ -75,12 +75,12 @@ public class TwoBTwoTJPControlFastFly implements FlyEvent {
 
         if (InputConstants.isKeyDown(mc.getWindow(), InputConstants.KEY_LCONTROL) && MovementUtil.isMoving()) {
             if (boostSpeed != 1.5f) {
-                Client.notificationManager.addNotification("Tesla bypass", "Boosted speed to MAX");
+                Client.notificationManager.addNotification("Tesla 绕过", "已将速度提升至最大");
                 boostSpeed = 1.5f;
             }
         } else if (boostSpeed > 1f) {
             boostSpeed = 1f;
-            Client.notificationManager.addNotification("Reset", "Reset boost speed (cancel)");
+            Client.notificationManager.addNotification("重置", "重置加速(取消)");
         }
 
         float yMotion = 0f;
@@ -119,7 +119,7 @@ public class TwoBTwoTJPControlFastFly implements FlyEvent {
 
         if (packet instanceof ClientboundPlayerPositionPacket && boostSpeed > 1f) {
             boostSpeed = 1f;
-            Client.notificationManager.addNotification("Reset", "Reset boost speed (flag)");
+            Client.notificationManager.addNotification("重置", "重置加速(标记)");
         }
     }
 

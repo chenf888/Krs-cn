@@ -14,18 +14,17 @@ import java.util.Locale;
 public class WorldTime extends Module {
 
     public WorldTime() {
-        super("World Time", ModuleCategory.Render, GLFW.GLFW_KEY_UNKNOWN, false, false);
+        super("世界时间", ModuleCategory.Render, GLFW.GLFW_KEY_UNKNOWN, false, false);
     }
 
     @Setting
-    private static final ListValue time = new ListValue(
-            "Time of Day",
+    private static final ListValue time = new ListValue("时间段",
             new String[]{"Day", "Night", "Midnight", "Sunrise"},
             "Midnight"
     );
 
     @Setting
-    public static final BooleanValue clearWeather = new BooleanValue("Clear Weather", true);
+    public static final BooleanValue clearWeather = new BooleanValue("晴朗天气", true);
 
     public static Long getActiveTimeTicks() {
         if (!ModuleManager.getModuleState(WorldTime.class) || mc.level == null)

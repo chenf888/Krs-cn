@@ -86,7 +86,7 @@ public class Interface extends Module {
     private static String cachedTimeText = "00:00:00";
 
     public Interface() {
-        super("Interface", ModuleCategory.Render, GLFW.GLFW_KEY_UNKNOWN, true, false);
+        super("界面", ModuleCategory.Render, GLFW.GLFW_KEY_UNKNOWN, true, false);
     }
 
     private static Color alphaColor(int red, int green, int blue, int alpha) {
@@ -112,71 +112,60 @@ public class Interface extends Module {
     }
 
     @Setting
-    private static final BooleanValue waterMark = new BooleanValue(
-            "Watermark",
+    private static final BooleanValue waterMark = new BooleanValue("水印",
             true
     );
 
     @Setting
-    private final TextValue waterMarkText = new TextValue(
-            "Watermark Component",
+    private final TextValue waterMarkText = new TextValue("水印组件",
             "Krs",
             waterMark::get
     );
 
     @Setting
-    private static final ListValue waterMarkMode = new ListValue(
-            "Watermark Mode",
+    private static final ListValue waterMarkMode = new ListValue("水印模式",
             new String[]{"Simple", "Bullshit"},
             "Simple",
             waterMark::get
     );
 
     @Setting
-    private final BooleanValue moduleList = new BooleanValue(
-            "Module List",
+    private final BooleanValue moduleList = new BooleanValue("模块列表",
             true
     );
 
     @Setting
-    private static final BooleanValue tabGui = new BooleanValue(
-            "TabGui",
+    private static final BooleanValue tabGui = new BooleanValue("Tab界面",
             false
     );
 
     @Setting
-    private final BooleanValue notifications = new BooleanValue(
-            "Notifications",
+    private final BooleanValue notifications = new BooleanValue("通知",
             true
     );
 
     @Setting
-    private final BooleanValue targetHud = new BooleanValue(
-            "Target Hud",
+    private final BooleanValue targetHud = new BooleanValue("目标信息",
             true
     );
 
     @Setting
-    private static final BooleanValue miniMap = new BooleanValue(
-            "Minimap",
+    private static final BooleanValue miniMap = new BooleanValue("小地图",
             true
     );
 
     @Setting
-    private static final BooleanValue playerList = new BooleanValue(
-            "Players",
+    private static final BooleanValue playerList = new BooleanValue("玩家",
             false
     );
 
     @Setting
-    private final BooleanValue moduleInformation = new BooleanValue(
-            "Module Information",
+    private final BooleanValue moduleInformation = new BooleanValue("模块信息",
             true
     );
 
     @Setting
-    public static final BooleanValue someInformation = new BooleanValue(
-            "Some Information",
+    public static final BooleanValue someInformation = new BooleanValue("部分信息",
             true
     );
 
@@ -761,15 +750,15 @@ public class Interface extends Module {
 
         String connectionType;
         int ping = -1;
-        String serverIp = "Unknown";
+        String serverIp = "未知";
 
         if (mc.isLocalServer()) {
-            connectionType = "Singleplayer";
+            connectionType = "单人游戏";
         } else if (mc.getCurrentServer() != null) {
-            connectionType = "Multiplayer";
+            connectionType = "多人游戏";
             serverIp = mc.getCurrentServer().ip;
         } else {
-            connectionType = "Integrated Server";
+            connectionType = "内置服务器";
         }
 
         if (mc.getConnection() != null && mc.player != null) {
@@ -787,8 +776,8 @@ public class Interface extends Module {
 
         connectionEntries.add(new InfoHudEntry(connectionType, MaterialIcon.PUBLIC));
 
-        if (!connectionType.equals("Singleplayer")) {
-            String pingText = (ping >= 0) ? ping + "ms" : "Unknown";
+        if (!connectionType.equals("单人游戏")) {
+            String pingText = (ping >= 0) ? ping + "ms" : "未知";
             connectionEntries.add(new InfoHudEntry(serverIp, MaterialIcon.LAN));
             connectionEntries.add(new InfoHudEntry(pingText, MaterialIcon.SIGNAL));
         }
@@ -1406,14 +1395,14 @@ public class Interface extends Module {
         boolean hypixelDisablerActive = ModuleManager.getModuleState(DisablerModule.class) && HypixelDisabler.stuckOnAir && HypixelDisabler.airTicks >= 9 && !HypixelDisabler.watchDogDisabled;
         float progress = advanceModuleInformationFade(INFO_HYPIXEL_DISABLER, hypixelDisablerActive, deltaSpeed);
         if (progress > 0f)
-            entries.add(new StyledTextRenderEntry("Disabling... " + HypixelDisabler.airStuckTicks + "/25", centerX, startY, progress));
+            entries.add(new StyledTextRenderEntry("正在禁用... " + HypixelDisabler.airStuckTicks + "/25", centerX, startY, progress));
         if (hypixelDisablerActive) startY -= 40f;
 
         LookTP lookTP = ModuleManager.getModule(LookTP.class);
         boolean lookTpTeleporting = lookTP != null && lookTP.isClientsideTeleporting();
         progress = advanceModuleInformationFade(INFO_LOOK_TP, lookTpTeleporting, deltaSpeed);
         if (progress > 0f)
-            entries.add(new StyledTextRenderEntry("Look TP: " + lookTP.getTeleportProgressPercent() + "%", centerX, startY, progress));
+            entries.add(new StyledTextRenderEntry("视线传送: " + lookTP.getTeleportProgressPercent() + "%", centerX, startY, progress));
         if (lookTpTeleporting) startY -= 40f;
 
         boolean breakingActive = mc.gameMode != null && (
@@ -1422,20 +1411,20 @@ public class Interface extends Module {
                         || ModuleManager.getModuleState(Nuker.class) && Nuker.getWasBreaking());
         progress = advanceModuleInformationFade(INFO_BREAKING, breakingActive, deltaSpeed);
         if (progress > 0f)
-            entries.add(new StyledTextRenderEntry("Breaking...", centerX, startY, progress));
+            entries.add(new StyledTextRenderEntry("正在挖掘...", centerX, startY, progress));
         if (breakingActive) startY -= 40f;
 
         boolean blinking = BlinkUtil.INSTANCE.getBlinking();
         progress = advanceModuleInformationFade(INFO_BLINKING, blinking, deltaSpeed);
         if (progress > 0f)
-            entries.add(new StyledTextRenderEntry("Blinking... (x" + BlinkUtil.INSTANCE.getPacketCount() + ")", centerX, startY, progress));
+            entries.add(new StyledTextRenderEntry("闪烁中... (x" + BlinkUtil.INSTANCE.getPacketCount() + ")", centerX, startY, progress));
         if (blinking) startY -= 40f;
 
         boolean scaffoldActive = ModuleManager.getModuleState(Scaffold.class) && mc.player != null;
         progress = advanceModuleInformationFade(INFO_SCAFFOLD_BLOCKS, scaffoldActive, deltaSpeed);
         if (progress > 0f) {
             int scaffoldBlocks = mc.player != null ? Scaffold.countUsableHotbarBlocks(mc.player.getInventory()) : 0;
-            entries.add(new StyledTextRenderEntry("Amount: " + scaffoldBlocks, centerX, startY, progress));
+            entries.add(new StyledTextRenderEntry("数量: " + scaffoldBlocks, centerX, startY, progress));
         }
         if (scaffoldActive) startY -= 40f;
 
@@ -1450,7 +1439,7 @@ public class Interface extends Module {
         boolean murdererDetectorActive = ModuleManager.getModuleState(MurdererDetector.class);
         progress = advanceModuleInformationFade(INFO_MURDERER_COUNT, murdererDetectorActive, deltaSpeed);
         if (progress > 0f)
-            entries.add(new StyledTextRenderEntry("Murderers: " + murdererList.size(), centerX, startY, progress));
+            entries.add(new StyledTextRenderEntry("凶手: " + murdererList.size(), centerX, startY, progress));
     }
 
     public void renderPlayerList(NVGU vg) {
@@ -1468,7 +1457,7 @@ public class Interface extends Module {
         vg.rectangle(x + 8f, y + 23f - 2f, 240f - 16f, 1f, new Color(255, 255, 255, 38));
 
         NVGFonts.ICON.drawText(MaterialIcon.PERSON, x + 8f, y + 3f, 14f, new Color(0, 255, 255), Alignment.LEFT_TOP, true);
-        NVGFonts.INTER.drawText("Players (" + countText + ")", x + 26f, y + 4f, 13f, new Color(255, 255, 255, 225), Alignment.LEFT_TOP, true);
+        NVGFonts.INTER.drawText("玩家 (" + countText + ")", x + 26f, y + 4f, 13f, new Color(255, 255, 255, 225), Alignment.LEFT_TOP, true);
 
         float rowY = y + 23f;
         for (int i = 0; i < visiblePlayers; i++) {
@@ -1505,7 +1494,7 @@ public class Interface extends Module {
     private static String getPlayerListName(PlayerInfo entry) {
         String name = getPlayerListDisplayName(entry).getString();
         name = stripPlayerListRankPrefix(name);
-        return name == null || name.isBlank() ? "Unknown" : name;
+        return name == null || name.isBlank() ? "未知" : name;
     }
 
     private static String getColoredPlayerListName(PlayerInfo entry) {
@@ -1513,7 +1502,7 @@ public class Interface extends Module {
         String plainName = displayName.getString();
         String strippedName = stripPlayerListRankPrefix(plainName);
         if (strippedName == null || strippedName.isBlank())
-            return "Unknown";
+            return "未知";
 
         int skippedCharacters = plainName.length() - strippedName.length();
         return NanoVGTextFormatter.formatColors(displayName, skippedCharacters);
@@ -2285,7 +2274,7 @@ public class Interface extends Module {
         vg.rectangle(x + 8f, y + 24f, categoryWidth - 16f, 1f, new Color(255, 255, 255, 38));
 
         NVGFonts.ICON.drawText(MaterialIcon.MENU, x + 8f, y + 4f, 14f, new Color(0, 255, 255), Alignment.LEFT_TOP, true);
-        NVGFonts.INTER_MEDIUM.drawText("Modules", x + 26f, y + 5f, 13f, new Color(255, 255, 255, 225), Alignment.LEFT_TOP, true);
+        NVGFonts.INTER_MEDIUM.drawText("模块", x + 26f, y + 5f, 13f, new Color(255, 255, 255, 225), Alignment.LEFT_TOP, true);
 
         if (!Float.isNaN(tabGuiCategorySelectionY)) {
             vg.roundedRectangle(x + 5f, tabGuiCategorySelectionY + 2f, categoryWidth - 10f, 18f, 4f, new Color(0, 255, 255, 32));
@@ -2299,7 +2288,7 @@ public class Interface extends Module {
 
             Color textColor = selected ? new Color(0, 255, 255) : new Color(255, 255, 255, 215);
             NVGFonts.ICON.drawText(tabGuiCategoryIcon(category), x + 11f, rowY + 4f, 12f, textColor, Alignment.LEFT_TOP, true);
-            NVGFonts.INTER.drawText(category.name(), x + 28f, rowY + 4f, 14f, textColor, Alignment.LEFT_TOP, true);
+            NVGFonts.INTER.drawText(category.displayName(), x + 28f, rowY + 4f, 14f, textColor, Alignment.LEFT_TOP, true);
 
             if (selected && expandProgress > 0.01f) {
                 NVGFonts.ICON.drawText(MaterialIcon.RIGHT_ARROW, x + categoryWidth - 8f, rowY + 3f, 14f, new Color(0, 255, 255, (int) (255 * expandProgress)), Alignment.RIGHT_TOP, true);
@@ -2326,7 +2315,7 @@ public class Interface extends Module {
             vg.rectangle(x + 8f, y + 24f, width - 16f, 1f, new Color(255, 255, 255, 38));
 
             NVGFonts.ICON.drawText(MaterialIcon.TUNE, x + 8f, y + 4f, 14f, new Color(0, 255, 255), Alignment.LEFT_TOP, true);
-            NVGFonts.INTER_MEDIUM.drawText(category != null ? category.name() : "Modules", x + 26f, y + 5f, 13f, new Color(255, 255, 255, 225), Alignment.LEFT_TOP, true);
+            NVGFonts.INTER_MEDIUM.drawText(category != null ? category.displayName() : "模块", x + 26f, y + 5f, 13f, new Color(255, 255, 255, 225), Alignment.LEFT_TOP, true);
 
             if (!Float.isNaN(tabGuiModuleSelectionY)) {
                 vg.roundedRectangle(x + 5f, tabGuiModuleSelectionY + 2f, width - 10f, 18f, 4f, new Color(0, 255, 255, 32));
@@ -2358,9 +2347,9 @@ public class Interface extends Module {
     }
 
     private float getTabGuiCategoryPanelWidth(List<ModuleCategory> categories) {
-        float width = NVGFonts.INTER_MEDIUM.getWidth("Modules", 13f) + 40f;
+        float width = NVGFonts.INTER_MEDIUM.getWidth("模块", 13f) + 40f;
         for (ModuleCategory category : categories) {
-            width = Math.max(width, NVGFonts.INTER.getWidth(category.name(), 14f) + 58f);
+            width = Math.max(width, NVGFonts.INTER.getWidth(category.displayName(), 14f) + 58f);
         }
         return Math.max(110f, width);
     }
@@ -2378,7 +2367,7 @@ public class Interface extends Module {
     }
 
     private float getTabGuiModulePanelWidth(@Nullable ModuleCategory category, List<Module> modules) {
-        float width = NVGFonts.INTER_MEDIUM.getWidth(category != null ? category.name() : "Modules", 13f) + 40f;
+        float width = NVGFonts.INTER_MEDIUM.getWidth(category != null ? category.displayName() : "模块", 13f) + 40f;
         for (Module module : modules) {
             width = Math.max(width, NVGFonts.INTER.getWidth(module.moduleName, 14f) + 43f);
         }

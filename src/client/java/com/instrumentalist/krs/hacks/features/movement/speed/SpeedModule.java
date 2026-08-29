@@ -15,12 +15,11 @@ import org.lwjgl.glfw.GLFW;
 public class SpeedModule extends Module {
 
     public SpeedModule() {
-        super("Speed", ModuleCategory.Movement, GLFW.GLFW_KEY_UNKNOWN, false, true);
+        super("加速", ModuleCategory.Movement, GLFW.GLFW_KEY_UNKNOWN, false, true);
     }
 
     @Setting
-    private static final ListValue speedMode = new ListValue(
-            "Speed Mode",
+    private static final ListValue speedMode = new ListValue("加速模式",
             new String[]{"Vanilla", "Smooth Vanilla", "Hypixel NCP Hop", "Modern MMC", "5b5t", "Boost", "Flag Boost", "NCP", "Verus", "Vulcan", "Vulcan Old", "Miniblox"},
             "Vanilla"
     );
@@ -29,15 +28,15 @@ public class SpeedModule extends Module {
 
     // Identify
     @Setting
-    public static final FloatValue vanillaSpeed = new FloatValue("Speed", 1f, 0.1f, 10f, () -> speedMode.get().equalsIgnoreCase("vanilla") || speedMode.get().equalsIgnoreCase("smooth vanilla") || speedMode.get().equalsIgnoreCase("flag boost"));
+    public static final FloatValue vanillaSpeed = new FloatValue("速度", 1f, 0.1f, 10f, () -> speedMode.get().equalsIgnoreCase("vanilla") || speedMode.get().equalsIgnoreCase("smooth vanilla") || speedMode.get().equalsIgnoreCase("flag boost"));
 
     // Vanilla
     @Setting
-    public static final BooleanValue vanillaAutoBHop = new BooleanValue("Auto BHop", true, () -> speedMode.get().equalsIgnoreCase("vanilla"));
+    public static final BooleanValue vanillaAutoBHop = new BooleanValue("自动连跳", true, () -> speedMode.get().equalsIgnoreCase("vanilla"));
 
     // Vulcan Old
     @Setting
-    public static final ListValue vulcan2Mode = new ListValue("Vulcan Old Mode", new String[]{"BHop", "LowHop", "Ground", "YPort"}, "BHop", () -> speedMode.get().equalsIgnoreCase("vulcan old"));
+    public static final ListValue vulcan2Mode = new ListValue("Vulcan 旧模式", new String[]{"BHop", "LowHop", "Ground", "YPort"}, "BHop", () -> speedMode.get().equalsIgnoreCase("vulcan old"));
 
     public static void onEnableFunctions() {
         if (speedModeManager.currentMode instanceof VulcanOldSpeed)

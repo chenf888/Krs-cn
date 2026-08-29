@@ -20,18 +20,18 @@ import java.util.Locale;
 
 public class AutoRocket extends Module {
     @Setting
-    private final ListValue mode = new ListValue("Mode", new String[]{"Low Speed", "Jump", "Always"}, "Low Speed");
+    private final ListValue mode = new ListValue("模式", new String[]{"Low Speed", "Jump", "Always"}, "Low Speed");
 
     @Setting
-    private final FloatValue speed = new FloatValue("Speed", 0.7f, 0.1f, 3.0f, () -> mode.get().equalsIgnoreCase("low speed"));
+    private final FloatValue speed = new FloatValue("速度", 0.7f, 0.1f, 3.0f, () -> mode.get().equalsIgnoreCase("low speed"));
 
     @Setting
-    private final IntValue delay = new IntValue("Delay", 1500, 100, 5000, "ms");
+    private final IntValue delay = new IntValue("延迟", 1500, 100, 5000, "ms");
 
     private final MSTimer rocketTimer = new MSTimer();
 
     public AutoRocket() {
-        super("Auto Rocket", ModuleCategory.Movement, GLFW.GLFW_KEY_UNKNOWN, false, true);
+        super("自动火箭", ModuleCategory.Movement, GLFW.GLFW_KEY_UNKNOWN, false, true);
     }
 
     @Override

@@ -16,7 +16,7 @@ public class AutoTotem extends Module {
     private final MSTimer swapTimer = new MSTimer();
 
     public AutoTotem() {
-        super("Auto Totem", ModuleCategory.Combat, GLFW.GLFW_KEY_UNKNOWN, false, true);
+        super("自动图腾", ModuleCategory.Combat, GLFW.GLFW_KEY_UNKNOWN, false, true);
     }
 
     @Override

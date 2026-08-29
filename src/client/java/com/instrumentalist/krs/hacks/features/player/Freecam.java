@@ -14,10 +14,10 @@ import org.lwjgl.glfw.GLFW;
 public class Freecam extends Module {
 
     @Setting
-    private static final FloatValue horizontalSpeed = new FloatValue("Horizontal Speed", 2f, 0.1f, 4f);
+    private static final FloatValue horizontalSpeed = new FloatValue("水平速度", 2f, 0.1f, 4f);
 
     @Setting
-    private static final FloatValue verticalSpeed = new FloatValue("Vertical Speed", 1f, 0.1f, 4f);
+    private static final FloatValue verticalSpeed = new FloatValue("垂直速度", 1f, 0.1f, 4f);
 
     private static boolean canFly = false;
     private static Vec3 camPos = Vec3.ZERO;
@@ -26,7 +26,7 @@ public class Freecam extends Module {
     private static float camPitch = 0f;
 
     public Freecam() {
-        super("Freecam", ModuleCategory.Player, GLFW.GLFW_KEY_UNKNOWN, false, true);
+        super("自由视角", ModuleCategory.Player, GLFW.GLFW_KEY_UNKNOWN, false, true);
     }
 
     @Override

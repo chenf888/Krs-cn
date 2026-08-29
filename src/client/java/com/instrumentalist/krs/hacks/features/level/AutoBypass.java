@@ -21,14 +21,14 @@ import net.minecraft.network.protocol.game.ClientboundSystemChatPacket;
 public class AutoBypass extends Module {
 
     public AutoBypass() {
-        super("Auto Bypass", ModuleCategory.Level, GLFW.GLFW_KEY_UNKNOWN, false, true);
+        super("自动绕过", ModuleCategory.Level, GLFW.GLFW_KEY_UNKNOWN, false, true);
     }
 
     @Setting
-    private static final ListValue mode = new ListValue("Mode", new String[]{"Hypixel", "Cubecraft", "Purple Prison", "Auth Me"}, "Hypixel");
+    private static final ListValue mode = new ListValue("模式", new String[]{"Hypixel", "Cubecraft", "Purple Prison", "Auth Me"}, "Hypixel");
 
     @Setting
-    private static final TextValue password = new TextValue("Password", "aaaaaaaa", () -> mode.get().equalsIgnoreCase("auth me"));
+    private static final TextValue password = new TextValue("密码", "aaaaaaaa", () -> mode.get().equalsIgnoreCase("auth me"));
 
     private static String neededCommand = null;
     private static String neededClickCommand = null;
@@ -72,14 +72,14 @@ public class AutoBypass extends Module {
                 if (packet instanceof ClientboundSystemChatPacket chatPacket && !chatPacket.overlay()) {
                     if (chatPacket.content().getString().contains("You were spawned in Limbo.") || chatPacket.content().getString().contains("You are AFK. Move around to return from AFK.")) {
                         neededCommand = "lobby";
-                        Client.notificationManager.addNotification("Auto Chat", "Trying to bypass limbo...");
+                        Client.notificationManager.addNotification("自动聊天", "正在尝试绕过 limbo...");
                     } else if (chatPacket.content().getString().contains("You won! Want to play again?") || chatPacket.content().getString().contains("You died! Want to play again?")) {
                         ClickEvent.RunCommand playAgain = findClickHereCommand(chatPacket.content());
                         if (playAgain != null) {
                             neededClickCommand = playAgain.command();
-                            Client.notificationManager.addNotification("Auto Join", "Joining to next game...");
+                            Client.notificationManager.addNotification("自动加入", "正在加入下一局游戏...");
                         } else {
-                            Client.notificationManager.addNotification("Auto Join", "Failed to track command");
+                            Client.notificationManager.addNotification("自动加入", "无法跟踪命令");
                         }
                     }
                 }
@@ -88,14 +88,14 @@ public class AutoBypass extends Module {
             case "cubecraft":
                 if (packet instanceof ClientboundSystemChatPacket chatPacket && !chatPacket.overlay() && chatPacket.content().getString().contains("Thank you for playing")) {
                     neededCommand = "playagain now";
-                    Client.notificationManager.addNotification("Auto Join", "Joining to next game...");
+                    Client.notificationManager.addNotification("自动加入", "正在加入下一局游戏...");
                 }
                 break;
 
             case "purple prison":
                 if (packet instanceof ClientboundSystemChatPacket chatPacket && !chatPacket.overlay() && chatPacket.content().getString().contains("ALERT! Your inventory is full (Use /sell)")) {
                     neededCommand = "sell";
-                    Client.notificationManager.addNotification("Auto Sell", "Sold every items");
+                    Client.notificationManager.addNotification("自动出售", "已出售所有物品");
                 }
                 break;
 
@@ -104,10 +104,10 @@ public class AutoBypass extends Module {
                     String message = chatPacket.content().getString();
                     if (message.contains("login")) {
                         neededCommand = "login " + password.get();
-                        Client.notificationManager.addNotification("Auto Auth", "Logging in...");
+                        Client.notificationManager.addNotification("自动登录", "正在登录...");
                     } else if (message.contains("register")) {
                         neededCommand = "register " + password.get() + " " + password.get();
-                        Client.notificationManager.addNotification("Auto Auth", "Registering...");
+                        Client.notificationManager.addNotification("自动登录", "正在注册...");
                     }
                 }
                 break;

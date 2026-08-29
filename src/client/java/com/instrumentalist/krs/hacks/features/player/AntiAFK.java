@@ -16,20 +16,19 @@ import java.util.Locale;
 
 public class AntiAFK extends Module {
     @Setting
-    private final ListValue action = new ListValue(
-            "Action",
+    private final ListValue action = new ListValue("动作",
             new String[]{"Swing", "Rotate", "Jump", "Cycle"},
             "Cycle"
     );
 
     @Setting
-    private final IntValue interval = new IntValue("Interval", 5, 1, 300, "s");
+    private final IntValue interval = new IntValue("间隔", 5, 1, 300, "s");
 
     @Setting
-    private final BooleanValue pauseWhileHurt = new BooleanValue("Pause While Hurt", true);
+    private final BooleanValue pauseWhileHurt = new BooleanValue("受伤时暂停", true);
 
     @Setting
-    private final BooleanValue notifications = new BooleanValue("Notifications", false);
+    private final BooleanValue notifications = new BooleanValue("通知", false);
 
     private int idleTicks;
     private int cycleIndex;
@@ -39,7 +38,7 @@ public class AntiAFK extends Module {
     private boolean rotateRight;
 
     public AntiAFK() {
-        super("Anti AFK", ModuleCategory.Player, GLFW.GLFW_KEY_UNKNOWN, false, true);
+        super("防挂机", ModuleCategory.Player, GLFW.GLFW_KEY_UNKNOWN, false, true);
     }
 
     @Override
@@ -124,7 +123,7 @@ public class AntiAFK extends Module {
         }
 
         if (notifications.get() && Client.notificationManager != null)
-            Client.notificationManager.addNotification("Anti AFK", "Performed " + selectedAction);
+            Client.notificationManager.addNotification("防挂机", "Performed " + selectedAction);
     }
 
     private void swing() {

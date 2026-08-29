@@ -6,7 +6,7 @@ import org.lwjgl.glfw.GLFW;
 
 public class NoHurtCam extends Module {
     public NoHurtCam() {
-        super("No Hurt Cam", ModuleCategory.Render, GLFW.GLFW_KEY_UNKNOWN, false, false);
+        super("无受伤视角", ModuleCategory.Render, GLFW.GLFW_KEY_UNKNOWN, false, false);
     }
 
     @Override

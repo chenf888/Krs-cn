@@ -26,7 +26,7 @@ public class ThunderDetector extends Module {
     private static final Map<BlockPos, Long> excludedLightnings = new LinkedHashMap<>();
 
     public ThunderDetector() {
-        super("Thunder Detector", ModuleCategory.Render, GLFW.GLFW_KEY_UNKNOWN, false, false);
+        super("雷声检测", ModuleCategory.Render, GLFW.GLFW_KEY_UNKNOWN, false, false);
     }
 
     public static synchronized void excludeLightningAt(Vec3 position) {
@@ -69,14 +69,14 @@ public class ThunderDetector extends Module {
             if (isExcludedLightning(addEntityPacket.getX(), addEntityPacket.getY(), addEntityPacket.getZ()))
                 return;
 
-            String showMessage = "Detected lightning at " + (int) addEntityPacket.getX() + " " + (int) addEntityPacket.getY() + " " + (int) addEntityPacket.getZ()
-                    + " (" + (int) EntityExtension.squaredDistanceToWithoutY(player, addEntityPacket.getX(), addEntityPacket.getZ()) + " blocks away)";
-            Component tpMessage = Component.literal("§e> §7(§eClick to Teleport§7) §e" + showMessage).withStyle(style ->
+            String showMessage = "检测到闪电于 " + (int) addEntityPacket.getX() + " " + (int) addEntityPacket.getY() + " " + (int) addEntityPacket.getZ()
+                    + " (" + (int) EntityExtension.squaredDistanceToWithoutY(player, addEntityPacket.getX(), addEntityPacket.getZ()) + " 格远)";
+            Component tpMessage = Component.literal("§e> §7(§e点击传送§7) §e" + showMessage).withStyle(style ->
                     style.withClickEvent(new ClickEvent.SuggestCommand("/tp " + addEntityPacket.getX() + " " + addEntityPacket.getY() + " " + addEntityPacket.getZ()))
-                            .withHoverEvent(new HoverEvent.ShowText(Component.literal("§lClick to easily prepare for teleport to " + (int) addEntityPacket.getX() + ", " + (int) addEntityPacket.getY() + ", " + (int) addEntityPacket.getZ())))
+                            .withHoverEvent(new HoverEvent.ShowText(Component.literal("§l点击传送到 " + (int) addEntityPacket.getX() + ", " + (int) addEntityPacket.getY() + ", " + (int) addEntityPacket.getZ())))
             );
             ChatUtil.printModifiedChat(tpMessage);
-            Client.notificationManager.addNotification("Lightning detected!", showMessage);
+            Client.notificationManager.addNotification("检测到闪电!", showMessage);
         }
     }
 

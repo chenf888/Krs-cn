@@ -28,25 +28,25 @@ import java.util.UUID;
 
 public class HatenaPiano extends Module {
     @Setting
-    private final TextValue song = new TextValue("Song", "C D E F E D C R E F G A G F E R C C C C C C D D E E F F E D C");
+    private final TextValue song = new TextValue("曲目", "C D E F E D C R E F G A G F E R C C C C C C D D E E F F E D C");
 
     @Setting
-    private final IntValue defaultOctave = new IntValue("Default Octave", 1, 1, 4);
+    private final IntValue defaultOctave = new IntValue("默认八度", 1, 1, 4);
 
     @Setting
-    private final IntValue noteTicks = new IntValue("Note Ticks", 4, 2, 40);
+    private final IntValue noteTicks = new IntValue("音符刻", 4, 2, 40);
 
     @Setting
-    private final IntValue restTicks = new IntValue("Rest Ticks", 0, 0, 20);
+    private final IntValue restTicks = new IntValue("休止刻", 0, 0, 20);
 
     @Setting
-    private final FloatValue maxRotationSpeed = new FloatValue("Max Rotation Speed", 180f, 1f, 180f);
+    private final FloatValue maxRotationSpeed = new FloatValue("最大旋转速度", 180f, 1f, 180f);
 
     @Setting
-    private final FloatValue minRotationSpeed = new FloatValue("Min Rotation Speed", 180f, 1f, 180f);
+    private final FloatValue minRotationSpeed = new FloatValue("最小旋转速度", 180f, 1f, 180f);
 
     @Setting
-    private final BooleanValue loop = new BooleanValue("Loop", false);
+    private final BooleanValue loop = new BooleanValue("循环", false);
 
     private List<Step> steps = List.of();
     private int stepIndex = 0;
@@ -60,7 +60,7 @@ public class HatenaPiano extends Module {
     private boolean releaseRotation = false;
 
     public HatenaPiano() {
-        super("Hatena Piano", ModuleCategory.Dev, GLFW.GLFW_KEY_UNKNOWN, false, true);
+        super("Hatena 钢琴", ModuleCategory.Dev, GLFW.GLFW_KEY_UNKNOWN, false, true);
     }
 
     private static final PianoKey[] WHITE_KEYS = new PianoKey[]{
@@ -97,7 +97,7 @@ public class HatenaPiano extends Module {
 
     @Override
     public String description() {
-        return "White-key player. Use C D E F G A B, C2, K1..K29, R, and :ticks";
+        return "白键演奏。使用 C D E F G A B、C2、K1..K29、R 和 :ticks";
     }
 
     @Override
@@ -433,7 +433,7 @@ public class HatenaPiano extends Module {
 
     private void notifyPlayer(String message) {
         if (mc.player != null) {
-            ChatUtil.printChat("Piano Player: " + message);
+            ChatUtil.printChat("钢琴演奏: " + message);
         }
     }
 

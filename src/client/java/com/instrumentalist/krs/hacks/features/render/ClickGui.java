@@ -9,7 +9,7 @@ import org.lwjgl.glfw.GLFW;
 public class ClickGui extends Module {
 
     public ClickGui() {
-        super("Click Gui", ModuleCategory.Render, GLFW.GLFW_KEY_RIGHT_SHIFT, true, false);
+        super("点击界面", ModuleCategory.Render, GLFW.GLFW_KEY_RIGHT_SHIFT, true, false);
     }
 
     public static int getOpenGuiKey() {

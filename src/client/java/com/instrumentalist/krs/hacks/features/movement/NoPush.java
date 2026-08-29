@@ -7,7 +7,7 @@ import org.lwjgl.glfw.GLFW;
 public class NoPush extends Module {
 
     public NoPush() {
-        super("No Push", ModuleCategory.Movement, GLFW.GLFW_KEY_UNKNOWN, false, true);
+        super("无推动", ModuleCategory.Movement, GLFW.GLFW_KEY_UNKNOWN, false, true);
     }
 
     @Override

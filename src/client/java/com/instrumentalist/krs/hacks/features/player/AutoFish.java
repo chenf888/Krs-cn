@@ -21,11 +21,11 @@ import net.minecraft.world.phys.Vec3;
 public class AutoFish extends Module {
 
     public AutoFish() {
-        super("Auto Fish", ModuleCategory.Player, GLFW.GLFW_KEY_UNKNOWN, false, true);
+        super("自动钓鱼", ModuleCategory.Player, GLFW.GLFW_KEY_UNKNOWN, false, true);
     }
 
     @Setting
-    private static final ListValue handMode = new ListValue("Interaction Hand Mode", new String[]{"Mainhand", "Offhand"}, "Mainhand");
+    private static final ListValue handMode = new ListValue("交互手模式", new String[]{"Mainhand", "Offhand"}, "Mainhand");
 
     private final MSTimer fishTimer = new MSTimer();
 

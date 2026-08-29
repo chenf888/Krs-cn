@@ -20,15 +20,15 @@ import java.util.Locale;
 public class OldHitting extends Module {
 
     @Setting
-    public static final ListValue mode = new ListValue("Mode", new String[]{"Vanilla", "Push", "Dash", "Swang", "Swonk"}, "Vanilla");
+    public static final ListValue mode = new ListValue("模式", new String[]{"Vanilla", "Push", "Dash", "Swang", "Swonk"}, "Vanilla");
 
     @Setting
-    private static final ListValue thirdPersonMode = new ListValue("Third Person Mode", new String[]{"Vanilla", "Legacy Vanilla"}, "Legacy Vanilla");
+    private static final ListValue thirdPersonMode = new ListValue("第三人称模式", new String[]{"Vanilla", "Legacy Vanilla"}, "Legacy Vanilla");
 
     private static boolean canBlock = false;
 
     public OldHitting() {
-        super("Old Hitting", ModuleCategory.Render, GLFW.GLFW_KEY_UNKNOWN, false, true);
+        super("旧版攻击", ModuleCategory.Render, GLFW.GLFW_KEY_UNKNOWN, false, true);
     }
 
     private boolean noBlockOnSelectedBlock() {

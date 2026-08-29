@@ -62,19 +62,17 @@ public class KillAura extends Module {
     };
 
     public KillAura() {
-        super("Kill Aura", ModuleCategory.Combat, GLFW.GLFW_KEY_UNKNOWN, false, true);
+        super("杀戮光环", ModuleCategory.Combat, GLFW.GLFW_KEY_UNKNOWN, false, true);
     }
 
     @Setting
-    private final ListValue targetMode = new ListValue(
-            "Target Mode",
+    private final ListValue targetMode = new ListValue("目标模式",
             new String[]{"Single", "Multi"},
             "Single"
     );
 
     @Setting
-    private final IntValue maxTargets = new IntValue(
-            "Max Targets",
+    private final IntValue maxTargets = new IntValue("最大目标数",
             3,
             2,
             10,
@@ -82,38 +80,33 @@ public class KillAura extends Module {
     );
 
     @Setting
-    private final FloatValue targetRange = new FloatValue(
-            "Target Range",
+    private final FloatValue targetRange = new FloatValue("目标范围",
             4f,
             0f,
             8f
     );
 
     @Setting
-    public static final FloatValue attackRange = new FloatValue(
-            "Attack Range",
+    public static final FloatValue attackRange = new FloatValue("攻击范围",
             3f,
             0f,
             6f
     );
 
     @Setting
-    private final ListValue apsMode = new ListValue(
-            "APS Mode",
+    private final ListValue apsMode = new ListValue("APS模式",
             new String[]{"Cooldown", "Randomized CPS", "Hurt Math", "No Delay"},
             "Cooldown"
     );
 
     @Setting
-    private final BooleanValue quickCooldown = new BooleanValue(
-            "Quick Cooldown",
+    private final BooleanValue quickCooldown = new BooleanValue("快速冷却",
             true,
             () -> apsMode.get().equalsIgnoreCase("cooldown")
     );
 
     @Setting
-    private final IntValue maxCps = new IntValue(
-            "Max CPS",
+    private final IntValue maxCps = new IntValue("最大CPS",
             12,
             1,
             20,
@@ -121,8 +114,7 @@ public class KillAura extends Module {
     );
 
     @Setting
-    private final IntValue minCps = new IntValue(
-            "Min CPS",
+    private final IntValue minCps = new IntValue("最小CPS",
             6,
             1,
             20,
@@ -130,22 +122,19 @@ public class KillAura extends Module {
     );
 
     @Setting
-    private final ListValue swingOrderMode = new ListValue(
-            "Swing Order Mode",
+    private final ListValue swingOrderMode = new ListValue("挥动顺序模式",
             new String[]{"1.8", "1.9.x", "No Order"},
             "1.9.x"
     );
 
     @Setting
-    public static final ListValue autoBlockMode = new ListValue(
-            "Auto Block Mode",
+    public static final ListValue autoBlockMode = new ListValue("自动格挡模式",
             new String[]{"Vanilla", "Blink1", "Blink2", "Hypixel NCP", "Swap", "Legit", "Packet", "Interact1", "Interact2", "Basic", "Spoof", "Delayed", "Post Attack", "No Order"},
             "No Order"
     );
 
     @Setting
-    private final FloatValue autoBlockCps = new FloatValue(
-            "Auto Block CPS",
+    private final FloatValue autoBlockCps = new FloatValue("自动格挡CPS",
             8f,
             1f,
             10f,
@@ -153,8 +142,7 @@ public class KillAura extends Module {
     );
 
     @Setting
-    private final FloatValue autoBlockRange = new FloatValue(
-            "Auto Block Range",
+    private final FloatValue autoBlockRange = new FloatValue("自动格挡范围",
             6f,
             3f,
             8f,
@@ -162,14 +150,12 @@ public class KillAura extends Module {
     );
 
     @Setting
-    public static final BooleanValue rotations = new BooleanValue(
-            "Rotations",
+    public static final BooleanValue rotations = new BooleanValue("旋转",
             true
     );
 
     @Setting
-    private final FloatValue maxRotationSpeed = new FloatValue(
-            "Max Rotation Speed",
+    private final FloatValue maxRotationSpeed = new FloatValue("最大旋转速度",
             60f,
             1f,
             180f,
@@ -177,8 +163,7 @@ public class KillAura extends Module {
     );
 
     @Setting
-    private final FloatValue minRotationSpeed = new FloatValue(
-            "Min Rotation Speed",
+    private final FloatValue minRotationSpeed = new FloatValue("最小旋转速度",
             40f,
             1f,
             180f,
@@ -186,45 +171,38 @@ public class KillAura extends Module {
     );
 
     @Setting
-    private final BooleanValue noHitCheck = new BooleanValue(
-            "No Hit Check",
+    private final BooleanValue noHitCheck = new BooleanValue("无命中检测",
             false,
             rotations::get
     );
 
     @Setting
-    private final BooleanValue throughWalls = new BooleanValue(
-            "Through Walls",
+    private final BooleanValue throughWalls = new BooleanValue("穿墙",
             true
     );
 
     @Setting
-    private final BooleanValue onlyPlayers = new BooleanValue(
-            "Only Players",
+    private final BooleanValue onlyPlayers = new BooleanValue("仅玩家",
             false
     );
 
     @Setting
-    private final BooleanValue visualSwing = new BooleanValue(
-            "Visual Swing",
+    private final BooleanValue visualSwing = new BooleanValue("可视化挥动",
             false
     );
 
     @Setting
-    public static final BooleanValue tpReach = new BooleanValue(
-            "TP Reach",
+    public static final BooleanValue tpReach = new BooleanValue("传送攻击距离",
             false
     );
 
     @Setting
-    public static final BooleanValue randomTp = new BooleanValue(
-            "Random TP",
+    public static final BooleanValue randomTp = new BooleanValue("随机传送",
             false
     );
 
     @Setting
-    private final FloatValue tpExtendedReach = new FloatValue(
-            "TP Extended Reach",
+    private final FloatValue tpExtendedReach = new FloatValue("传送扩展距离",
             40f,
             0f,
             200f,
@@ -232,8 +210,7 @@ public class KillAura extends Module {
     );
 
     @Setting
-    private final IntValue tpTicks = new IntValue(
-            "TP Ticks",
+    private final IntValue tpTicks = new IntValue("传送刻数",
             0,
             0,
             60,
@@ -242,21 +219,19 @@ public class KillAura extends Module {
     );
 
     @Setting
-    private final BooleanValue tpBack = new BooleanValue(
-            "TP Back",
+    private final BooleanValue tpBack = new BooleanValue("传送返回",
             true,
             () -> tpReach.get() || randomTp.get()
     );
 
     @Setting
-    private final BooleanValue tpOnGroundPacket = new BooleanValue(
-            "TP OnGround Packet",
+    private final BooleanValue tpOnGroundPacket = new BooleanValue("传送落地数据包",
             true,
             () -> tpReach.get() || randomTp.get()
     );
 
     @Setting
-    private final TextValue preferTargetId = new TextValue("Prefer Target ID", "1zun4");
+    private final TextValue preferTargetId = new TextValue("优先目标ID", "1zun4");
 
     public static Entity closestEntity = null;
     public static final List<Entity> multiTargets = new ArrayList<>();

@@ -9,13 +9,13 @@ import org.lwjgl.glfw.GLFW;
 
 public class SafeWalk extends Module {
     @Setting
-    private final BooleanValue onlyMoving = new BooleanValue("Only Moving", false);
+    private final BooleanValue onlyMoving = new BooleanValue("仅移动", false);
 
     @Setting
-    private final BooleanValue ignoreSneak = new BooleanValue("Ignore Sneak", false);
+    private final BooleanValue ignoreSneak = new BooleanValue("忽略潜行", false);
 
     public SafeWalk() {
-        super("Safe Walk", ModuleCategory.Movement, GLFW.GLFW_KEY_UNKNOWN, false, true);
+        super("安全行走", ModuleCategory.Movement, GLFW.GLFW_KEY_UNKNOWN, false, true);
     }
 
     @Override

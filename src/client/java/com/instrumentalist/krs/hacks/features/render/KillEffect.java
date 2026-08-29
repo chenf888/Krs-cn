@@ -29,7 +29,7 @@ public class KillEffect extends Module {
     private final Map<Integer, UUID> trackedEntityIds = new HashMap<>();
 
     public KillEffect() {
-        super("Kill Effect", ModuleCategory.Render, GLFW.GLFW_KEY_UNKNOWN, false, false);
+        super("击杀特效", ModuleCategory.Render, GLFW.GLFW_KEY_UNKNOWN, false, false);
     }
 
     @Override

@@ -10,7 +10,7 @@ import org.lwjgl.glfw.GLFW;
 public class Debugga extends Module {
 
     public Debugga() {
-        super("Debugga", ModuleCategory.Dev, GLFW.GLFW_KEY_UNKNOWN, false, true);
+        super("调试器", ModuleCategory.Dev, GLFW.GLFW_KEY_UNKNOWN, false, true);
     }
 
     @Override

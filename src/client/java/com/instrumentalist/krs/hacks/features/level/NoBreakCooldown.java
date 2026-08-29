@@ -7,7 +7,7 @@ import org.lwjgl.glfw.GLFW;
 public class NoBreakCooldown extends Module {
 
     public NoBreakCooldown() {
-        super("No Break Cooldown", ModuleCategory.Level, GLFW.GLFW_KEY_UNKNOWN, false, true);
+        super("无挖掘冷却", ModuleCategory.Level, GLFW.GLFW_KEY_UNKNOWN, false, true);
     }
 
     @Override

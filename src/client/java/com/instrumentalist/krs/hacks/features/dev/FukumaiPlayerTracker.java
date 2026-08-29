@@ -19,7 +19,7 @@ import java.util.concurrent.atomic.AtomicLong;
 public class FukumaiPlayerTracker extends Module {
 
     public FukumaiPlayerTracker() {
-        super("Fukumai Player Tracker", ModuleCategory.Dev, GLFW.GLFW_KEY_UNKNOWN, false, true);
+        super("Fukumai 玩家追踪", ModuleCategory.Dev, GLFW.GLFW_KEY_UNKNOWN, false, true);
     }
 
     private static volatile List<WebAccessUtil.PlayerInfo> playerInfoList = null;

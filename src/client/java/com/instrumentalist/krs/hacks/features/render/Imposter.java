@@ -29,12 +29,12 @@ public final class Imposter extends Module {
     private ClientLevel spawnedLevel;
 
     public Imposter() {
-        super("Imposter", ModuleCategory.Render, GLFW.GLFW_KEY_UNKNOWN, false, true);
+        super("伪装者", ModuleCategory.Render, GLFW.GLFW_KEY_UNKNOWN, false, true);
     }
 
     @Override
     public String description() {
-        return "Spawns an Among Us Imposter above you.";
+        return "在你上方生成一个 Among Us 内鬼。";
     }
 
     @Override
