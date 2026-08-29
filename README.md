@@ -1,6 +1,6 @@
 # Krs Client (26.2)
 
-###汉化by-chenf888
+### 汉化by-chenf888
 
 ### [Join the client discord server](https://discord.gg/nMTEzHcwSW)
 
